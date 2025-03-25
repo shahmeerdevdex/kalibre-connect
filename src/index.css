@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -112,18 +112,82 @@
   }
 
   .glassmorphism {
-    @apply bg-white/70 dark:bg-kalibre-900/70 backdrop-blur-md border border-white/20 dark:border-kalibre-800/30;
+    @apply bg-white/70 dark:bg-kalibre-900/70 backdrop-blur-md border border-white/20 dark:border-kalibre-800/30 shadow-sm;
   }
   
   .glassmorphism-card {
-    @apply bg-white/80 dark:bg-kalibre-900/80 backdrop-blur-lg border border-white/20 dark:border-kalibre-800/30 shadow-sm;
+    @apply bg-white/90 dark:bg-kalibre-900/80 backdrop-blur-lg border border-white/20 dark:border-kalibre-800/30 shadow-md;
   }
 
   .section-heading {
-    @apply text-3xl md:text-4xl lg:text-5xl font-display font-bold leading-tight mb-2 tracking-tight text-kalibre-950;
+    @apply text-3xl md:text-4xl lg:text-5xl font-display font-bold leading-tight mb-3 tracking-tight text-kalibre-950;
   }
 
   .section-subheading {
     @apply text-base md:text-lg lg:text-xl text-kalibre-600 max-w-3xl mb-12;
   }
+  
+  /* Enhanced Hover Effects */
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+  }
+  
+  .hover-expand {
+    @apply transition-all duration-300 hover:scale-105;
+  }
+  
+  .hover-glow {
+    @apply transition-all duration-300;
+  }
+  
+  .hover-glow:hover {
+    box-shadow: 0 0 20px rgba(139, 165, 201, 0.3);
+  }
+  
+  /* Image Effects */
+  .img-zoom-container {
+    @apply overflow-hidden;
+  }
+  
+  .img-zoom {
+    @apply transition-transform duration-700 hover:scale-110;
+  }
+  
+  /* Animation Delays */
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+  
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+  
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+  
+  .delay-400 {
+    animation-delay: 400ms;
+  }
+  
+  .delay-500 {
+    animation-delay: 500ms;
+  }
 }
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+

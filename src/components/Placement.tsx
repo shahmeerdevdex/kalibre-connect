@@ -1,6 +1,14 @@
 
 import React, { useEffect, useRef } from "react";
 import { Briefcase, MapPin, Building, Users } from "lucide-react";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { 
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const Placement = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -36,34 +44,63 @@ const Placement = () => {
     {
       icon: <MapPin size={24} className="text-kalibre-800" />,
       region: "Pakistan",
+      image: "/images/pakistan.jpg",
       description: "Premier hotels and resorts in Islamabad, Lahore, Karachi, and other major cities."
     },
     {
       icon: <MapPin size={24} className="text-kalibre-800" />,
       region: "Saudi Arabia",
+      image: "/images/saudi.jpg",
       description: "Luxury accommodations in Riyadh, Jeddah, and prestigious holy cities."
     },
     {
       icon: <MapPin size={24} className="text-kalibre-800" />,
       region: "Middle East",
+      image: "/images/dubai.jpg",
       description: "5-star hotel chains across Dubai, Abu Dhabi, Doha, and other Gulf destinations."
     },
     {
       icon: <MapPin size={24} className="text-kalibre-800" />,
       region: "United Kingdom",
+      image: "/images/uk.jpg",
       description: "Prestigious establishments in London and other major UK cities."
     },
     {
       icon: <MapPin size={24} className="text-kalibre-800" />,
       region: "Europe",
+      image: "/images/europe.jpg",
       description: "International hotel groups across European capitals and resort destinations."
     }
   ];
 
+  const testimonials = [
+    {
+      name: "Sarah Ahmed",
+      position: "Front Office Manager, Marriott Hotels",
+      image: "/images/testimonial1.jpg",
+      location: "Dubai, UAE",
+      quote: "The Kalibre's CTH program opened doors for me internationally. Their placement support helped me secure a position at one of Dubai's finest hotels."
+    },
+    {
+      name: "Hassan Khan",
+      position: "Executive Chef, Hilton Hotels",
+      image: "/images/testimonial2.jpg",
+      location: "London, UK",
+      quote: "The culinary training I received was world-class. The hands-on experience prepared me for the demands of international kitchens."
+    },
+    {
+      name: "Ayesha Malik",
+      position: "Events Coordinator, Hyatt Regency",
+      image: "/images/testimonial3.jpg",
+      location: "Riyadh, Saudi Arabia",
+      quote: "From classroom to career, The Kalibre supported me at every step. Their industry connections helped me find my dream job."
+    }
+  ];
+
   return (
-    <section id="placement" className="py-24 bg-kalibre-50">
+    <section id="placement" className="py-24 bg-gradient-to-b from-kalibre-50 to-white">
       <div className="section-container" ref={sectionRef}>
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
           <div>
             <div className="reveal opacity-0">
               <span className="inline-block px-3 py-1 mb-4 text-xs font-medium rounded-full bg-kalibre-100 text-kalibre-800 uppercase tracking-wide">
@@ -80,7 +117,7 @@ const Placement = () => {
             </div>
 
             <div className="reveal opacity-0" style={{ transitionDelay: "0.1s" }}>
-              <div className="flex items-start mb-6">
+              <div className="flex items-start mb-6 transform hover:translate-x-2 transition-all duration-300">
                 <div className="w-10 h-10 rounded-full bg-kalibre-100 flex items-center justify-center mr-4 flex-shrink-0">
                   <Briefcase size={18} className="text-kalibre-800" />
                 </div>
@@ -93,7 +130,7 @@ const Placement = () => {
                 </div>
               </div>
               
-              <div className="flex items-start mb-6">
+              <div className="flex items-start mb-6 transform hover:translate-x-2 transition-all duration-300">
                 <div className="w-10 h-10 rounded-full bg-kalibre-100 flex items-center justify-center mr-4 flex-shrink-0">
                   <Building size={18} className="text-kalibre-800" />
                 </div>
@@ -106,7 +143,7 @@ const Placement = () => {
                 </div>
               </div>
               
-              <div className="flex items-start">
+              <div className="flex items-start transform hover:translate-x-2 transition-all duration-300">
                 <div className="w-10 h-10 rounded-full bg-kalibre-100 flex items-center justify-center mr-4 flex-shrink-0">
                   <Users size={18} className="text-kalibre-800" />
                 </div>
@@ -122,42 +159,89 @@ const Placement = () => {
           </div>
           
           <div className="reveal opacity-0" style={{ transitionDelay: "0.2s" }}>
-            <div className="glassmorphism-card rounded-xl overflow-hidden">
-              <div className="p-6 border-b border-kalibre-100">
-                <h3 className="text-xl font-semibold text-kalibre-900 mb-2">Placement Destinations</h3>
-                <p className="text-kalibre-600 text-sm">
-                  Our graduates are successfully employed in prestigious hospitality establishments across:
-                </p>
-              </div>
-              
-              <div className="divide-y divide-kalibre-100">
-                {locations.map((location, index) => (
-                  <div key={index} className="p-5 flex items-center">
-                    <div className="w-10 h-10 rounded-full bg-kalibre-50 flex items-center justify-center mr-4 flex-shrink-0">
+            <AspectRatio ratio={4/3} className="rounded-xl overflow-hidden">
+              <img 
+                src="/images/placement-main.jpg" 
+                alt="Global career opportunities" 
+                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+              />
+            </AspectRatio>
+          </div>
+        </div>
+
+        <div className="reveal opacity-0 mb-20">
+          <h3 className="text-2xl font-semibold text-kalibre-900 mb-8 text-center">Placement Destinations</h3>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            {locations.map((location, index) => (
+              <div key={index} className="glassmorphism-card rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-105">
+                <AspectRatio ratio={1/1} className="bg-kalibre-100">
+                  <img 
+                    src={location.image} 
+                    alt={location.region} 
+                    className="w-full h-full object-cover"
+                  />
+                </AspectRatio>
+                <div className="p-4">
+                  <div className="flex items-center mb-2">
+                    <div className="w-8 h-8 rounded-full bg-kalibre-50 flex items-center justify-center mr-2 flex-shrink-0">
                       {location.icon}
                     </div>
-                    <div>
-                      <h4 className="font-medium text-kalibre-900">{location.region}</h4>
-                      <p className="text-kalibre-600 text-sm">{location.description}</p>
-                    </div>
+                    <h4 className="font-medium text-kalibre-900">{location.region}</h4>
                   </div>
-                ))}
-              </div>
-              
-              <div className="p-6 bg-kalibre-100/50">
-                <p className="text-center text-kalibre-700 font-medium">
-                  Ready to start your international career?
-                </p>
-                <div className="text-center mt-3">
-                  <a 
-                    href="#apply" 
-                    className="inline-block bg-kalibre-800 text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-kalibre-700 transition-all-200"
-                  >
-                    Apply Now
-                  </a>
+                  <p className="text-kalibre-600 text-xs">{location.description}</p>
                 </div>
               </div>
-            </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="reveal opacity-0">
+          <h3 className="text-2xl font-semibold text-kalibre-900 mb-8 text-center">Success Stories</h3>
+          <Carousel 
+            opts={{ loop: true, align: "start" }}
+            className="mx-auto"
+          >
+            <CarouselContent>
+              {testimonials.map((testimonial, index) => (
+                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                  <div className="glassmorphism-card rounded-xl overflow-hidden h-full transition-all duration-300 hover:shadow-lg hover:scale-105 mx-2">
+                    <div className="flex flex-col h-full">
+                      <div className="p-6 flex-grow">
+                        <div className="flex items-center mb-4">
+                          <div className="w-12 h-12 rounded-full overflow-hidden mr-3">
+                            <img 
+                              src={testimonial.image} 
+                              alt={testimonial.name} 
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <div>
+                            <h4 className="font-medium text-kalibre-900">{testimonial.name}</h4>
+                            <p className="text-kalibre-600 text-xs">{testimonial.position}</p>
+                          </div>
+                        </div>
+                        <p className="text-kalibre-700 italic text-sm">"{testimonial.quote}"</p>
+                      </div>
+                      <div className="p-3 bg-kalibre-50 flex items-center">
+                        <MapPin size={14} className="text-kalibre-600 mr-1" />
+                        <span className="text-kalibre-600 text-xs">{testimonial.location}</span>
+                      </div>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-0" />
+            <CarouselNext className="right-0" />
+          </Carousel>
+          
+          <div className="text-center mt-12">
+            <a 
+              href="#apply" 
+              className="inline-block bg-kalibre-800 text-white px-6 py-3 rounded-md font-medium hover:bg-kalibre-700 transition-all-200 transform hover:scale-105"
+            >
+              Start Your International Career
+            </a>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 
 import React, { useEffect, useRef } from "react";
 import { GraduationCap, Clock, Award, ExternalLink } from "lucide-react";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const Courses = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -37,6 +38,7 @@ const Courses = () => {
       title: "Diploma in Hospitality Management",
       level: "Level 4",
       duration: "12 months",
+      image: "/images/course-hospitality.jpg",
       description: "A comprehensive program covering all aspects of hospitality management, including rooms division, food and beverage, and event management.",
       highlights: ["International qualification", "Full-time or part-time options", "Practical training included"]
     },
@@ -44,6 +46,7 @@ const Courses = () => {
       title: "Certificate in Culinary Arts",
       level: "Level 3",
       duration: "6 months",
+      image: "/images/course-culinary.jpg",
       description: "Develop professional culinary skills with this hands-on program covering kitchen operations, food preparation, and culinary techniques.",
       highlights: ["Taught by professional chefs", "State-of-the-art kitchen facilities", "Portfolio development"]
     },
@@ -51,6 +54,7 @@ const Courses = () => {
       title: "Advanced Diploma in Hospitality & Tourism",
       level: "Level 5",
       duration: "18 months",
+      image: "/images/course-tourism.jpg",
       description: "An advanced program for aspiring managers in the hospitality and tourism sectors, with specialized modules in management and strategy.",
       highlights: ["Higher level qualification", "Management focus", "Industry placement"]
     }
@@ -78,9 +82,16 @@ const Courses = () => {
           {courses.map((course, index) => (
             <div 
               key={index} 
-              className="reveal opacity-0 glassmorphism-card rounded-xl overflow-hidden transition-all duration-300 hover:shadow-md hover:translate-y-[-4px]"
+              className="reveal opacity-0 glassmorphism-card rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:translate-y-[-8px]"
               style={{ transitionDelay: `${0.1 + index * 0.1}s` }}
             >
+              <AspectRatio ratio={16/9} className="bg-kalibre-100 overflow-hidden">
+                <img 
+                  src={course.image} 
+                  alt={course.title} 
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                />
+              </AspectRatio>
               <div className="h-2 bg-kalibre-700"></div>
               <div className="p-6">
                 <div className="flex justify-between items-start mb-4">
@@ -120,10 +131,10 @@ const Courses = () => {
                 
                 <a 
                   href="#apply" 
-                  className="inline-flex items-center text-kalibre-800 font-medium hover:text-kalibre-600 transition-all-200 text-sm"
+                  className="inline-flex items-center text-kalibre-800 font-medium hover:text-kalibre-600 transition-all-200 text-sm group"
                 >
                   Learn more
-                  <ExternalLink size={14} className="ml-1" />
+                  <ExternalLink size={14} className="ml-1 transform group-hover:translate-x-1 transition-transform" />
                 </a>
               </div>
             </div>
@@ -133,7 +144,7 @@ const Courses = () => {
         <div className="reveal opacity-0 mt-12 text-center">
           <a 
             href="#apply" 
-            className="inline-block bg-kalibre-800 text-white px-6 py-3 rounded-md font-medium hover:bg-kalibre-700 transition-all-200"
+            className="inline-block bg-kalibre-800 text-white px-6 py-3 rounded-md font-medium hover:bg-kalibre-700 transition-all-200 transform hover:scale-105"
           >
             Apply for a Course
           </a>
