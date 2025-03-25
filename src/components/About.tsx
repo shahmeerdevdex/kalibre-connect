@@ -11,6 +11,9 @@ const About = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("animate-fade-up");
+            entry.target.classList.remove("opacity-0");
+            // Once the animation is applied, unobserve the element to prevent issues on scroll
+            observer.unobserve(entry.target);
           }
         });
       },
