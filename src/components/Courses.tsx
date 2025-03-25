@@ -38,7 +38,7 @@ const Courses = () => {
       title: "Diploma in Hospitality Management",
       level: "Level 4",
       duration: "12 months",
-      image: "/images/course-hospitality.jpg",
+      image: "images/course-hospitality.jpg",
       description: "A comprehensive program covering all aspects of hospitality management, including rooms division, food and beverage, and event management.",
       highlights: ["International qualification", "Full-time or part-time options", "Practical training included"]
     },
@@ -46,7 +46,7 @@ const Courses = () => {
       title: "Certificate in Culinary Arts",
       level: "Level 3",
       duration: "6 months",
-      image: "/images/course-culinary.jpg",
+      image: "images/course-culinary.jpg",
       description: "Develop professional culinary skills with this hands-on program covering kitchen operations, food preparation, and culinary techniques.",
       highlights: ["Taught by professional chefs", "State-of-the-art kitchen facilities", "Portfolio development"]
     },
@@ -54,7 +54,7 @@ const Courses = () => {
       title: "Advanced Diploma in Hospitality & Tourism",
       level: "Level 5",
       duration: "18 months",
-      image: "/images/course-tourism.jpg",
+      image: "images/course-tourism.jpg",
       description: "An advanced program for aspiring managers in the hospitality and tourism sectors, with specialized modules in management and strategy.",
       highlights: ["Higher level qualification", "Management focus", "Industry placement"]
     }
