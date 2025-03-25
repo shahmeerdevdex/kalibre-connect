@@ -82,7 +82,7 @@ const About = () => {
                 <div className="w-full overflow-hidden">
                   <AspectRatio ratio={4/3}>
                     <img 
-                      src="images/about-image.jpg" 
+                      src="/images/about-image.jpg" 
                       alt="Hospitality students in classroom" 
                       className="object-cover w-full h-full transition-transform duration-700 hover:scale-110"
                     />
@@ -91,7 +91,7 @@ const About = () => {
                 <div className="p-6">
                   <div className="flex items-center mb-4">
                     <img 
-                      src="images/cth-logo.png" 
+                      src="/images/cth-logo.png" 
                       alt="CTH Logo" 
                       className="h-12 mr-4"
                     />

@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from "react";
 import { Briefcase, MapPin, Building, Users } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -20,7 +19,6 @@ const Placement = () => {
           if (entry.isIntersecting) {
             entry.target.classList.add("animate-fade-up");
             entry.target.classList.remove("opacity-0");
-            // Once the animation is applied, unobserve the element to prevent issues on scroll
             observer.unobserve(entry.target);
           }
         });
@@ -44,31 +42,31 @@ const Placement = () => {
     {
       icon: <MapPin size={24} className="text-kalibre-800" />,
       region: "Pakistan",
-      image: "images/pakistan.jpg",
+      image: "/images/pakistan.jpg",
       description: "Premier hotels and resorts in Islamabad, Lahore, Karachi, and other major cities."
     },
     {
       icon: <MapPin size={24} className="text-kalibre-800" />,
       region: "Saudi Arabia",
-      image: "images/saudi.jpg",
+      image: "/images/saudi.jpg",
       description: "Luxury accommodations in Riyadh, Jeddah, and prestigious holy cities."
     },
     {
       icon: <MapPin size={24} className="text-kalibre-800" />,
       region: "Middle East",
-      image: "images/dubai.jpg",
+      image: "/images/dubai.jpg",
       description: "5-star hotel chains across Dubai, Abu Dhabi, Doha, and other Gulf destinations."
     },
     {
       icon: <MapPin size={24} className="text-kalibre-800" />,
       region: "United Kingdom",
-      image: "images/uk.jpg",
+      image: "/images/uk.jpg",
       description: "Prestigious establishments in London and other major UK cities."
     },
     {
       icon: <MapPin size={24} className="text-kalibre-800" />,
       region: "Europe",
-      image: "images/europe.jpg",
+      image: "/images/europe.jpg",
       description: "International hotel groups across European capitals and resort destinations."
     }
   ];
@@ -77,21 +75,21 @@ const Placement = () => {
     {
       name: "Sarah Ahmed",
       position: "Front Office Manager, Marriott Hotels",
-      image: "images/testimonial1.jpg",
+      image: "/images/testimonial1.jpg",
       location: "Dubai, UAE",
       quote: "The Kalibre's CTH program opened doors for me internationally. Their placement support helped me secure a position at one of Dubai's finest hotels."
     },
     {
       name: "Hassan Khan",
       position: "Executive Chef, Hilton Hotels",
-      image: "images/testimonial2.jpg",
+      image: "/images/testimonial2.jpg",
       location: "London, UK",
       quote: "The culinary training I received was world-class. The hands-on experience prepared me for the demands of international kitchens."
     },
     {
       name: "Ayesha Malik",
       position: "Events Coordinator, Hyatt Regency",
-      image: "images/testimonial3.jpg",
+      image: "/images/testimonial3.jpg",
       location: "Riyadh, Saudi Arabia",
       quote: "From classroom to career, The Kalibre supported me at every step. Their industry connections helped me find my dream job."
     }
@@ -161,7 +159,7 @@ const Placement = () => {
           <div className="reveal opacity-0" style={{ transitionDelay: "0.2s" }}>
             <AspectRatio ratio={4/3} className="rounded-xl overflow-hidden">
               <img 
-                src="images/placement-main.jpg" 
+                src="/images/placement-main.jpg" 
                 alt="Global career opportunities" 
                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
               />
