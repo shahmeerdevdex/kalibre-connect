@@ -42,31 +42,31 @@ const Placement = () => {
     {
       icon: <MapPin size={24} className="text-kalibre-800" />,
       region: "Pakistan",
-      image: "/images/pakistan.jpg",
+      image: "https://images.unsplash.com/photo-1500673922987-e212871fec22?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       description: "Premier hotels and resorts in Islamabad, Lahore, Karachi, and other major cities."
     },
     {
       icon: <MapPin size={24} className="text-kalibre-800" />,
       region: "Saudi Arabia",
-      image: "/images/saudi.jpg",
+      image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       description: "Luxury accommodations in Riyadh, Jeddah, and prestigious holy cities."
     },
     {
       icon: <MapPin size={24} className="text-kalibre-800" />,
       region: "Middle East",
-      image: "/images/dubai.jpg",
+      image: "https://images.unsplash.com/photo-1543362995-788a2e5ba54b?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       description: "5-star hotel chains across Dubai, Abu Dhabi, Doha, and other Gulf destinations."
     },
     {
       icon: <MapPin size={24} className="text-kalibre-800" />,
       region: "United Kingdom",
-      image: "/images/uk.jpg",
+      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       description: "Prestigious establishments in London and other major UK cities."
     },
     {
       icon: <MapPin size={24} className="text-kalibre-800" />,
       region: "Europe",
-      image: "/images/europe.jpg",
+      image: "https://images.unsplash.com/photo-1519442249543-444325a69c92?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
       description: "International hotel groups across European capitals and resort destinations."
     }
   ];
@@ -75,21 +75,21 @@ const Placement = () => {
     {
       name: "Sarah Ahmed",
       position: "Front Office Manager, Marriott Hotels",
-      image: "/images/testimonial1.jpg",
+      image: "https://images.unsplash.com/photo-1620503374956-c942862f0372?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       location: "Dubai, UAE",
       quote: "The Kalibre's CTH program opened doors for me internationally. Their placement support helped me secure a position at one of Dubai's finest hotels."
     },
     {
       name: "Hassan Khan",
       position: "Executive Chef, Hilton Hotels",
-      image: "/images/testimonial2.jpg",
+      image: "https://images.unsplash.com/photo-1500673922987-e212871fec22?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       location: "London, UK",
       quote: "The culinary training I received was world-class. The hands-on experience prepared me for the demands of international kitchens."
     },
     {
       name: "Ayesha Malik",
       position: "Events Coordinator, Hyatt Regency",
-      image: "/images/testimonial3.jpg",
+      image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       location: "Riyadh, Saudi Arabia",
       quote: "From classroom to career, The Kalibre supported me at every step. Their industry connections helped me find my dream job."
     }
@@ -159,7 +159,7 @@ const Placement = () => {
           <div className="reveal opacity-0" style={{ transitionDelay: "0.2s" }}>
             <AspectRatio ratio={4/3} className="rounded-xl overflow-hidden">
               <img 
-                src="/images/placement-main.jpg" 
+                src="https://images.unsplash.com/photo-1543362995-788a2e5ba54b?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
                 alt="Global career opportunities" 
                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
               />

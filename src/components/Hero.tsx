@@ -1,3 +1,4 @@
+
 import React from "react";
 import { ArrowRight } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -51,7 +52,7 @@ const Hero = () => {
             <div className="relative p-2 bg-white/50 backdrop-blur-sm rounded-2xl shadow-lg transform hover:rotate-1 transition-all duration-500">
               <AspectRatio ratio={4/3} className="rounded-xl overflow-hidden">
                 <img 
-                  src="/images/hero-image.jpg" 
+                  src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" 
                   alt="Student learning hospitality" 
                   className="object-cover w-full h-full"
                 />
