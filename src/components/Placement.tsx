@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from "react";
 import { Briefcase, MapPin, Building, Users, CheckCircle } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -16,8 +15,9 @@ const Placement = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const [carouselApi, setCarouselApi] = React.useState<CarouselApi>();
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const scrollIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const scrollIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const [currentScrollPosition, setCurrentScrollPosition] = React.useState(0);
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -45,11 +45,16 @@ const Placement = () => {
     };
   }, []);
 
-  // Set up auto-scrolling for carousel
   useEffect(() => {
     if (carouselApi) {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      
       intervalRef.current = setInterval(() => {
-        carouselApi.scrollNext();
+        if (carouselApi.canScrollNext()) {
+          carouselApi.scrollNext();
+        } else {
+          carouselApi.scrollTo(0);
+        }
       }, 2000); // 2 seconds interval
     }
     
@@ -58,33 +63,34 @@ const Placement = () => {
     };
   }, [carouselApi]);
 
-  // Set up auto-scrolling for horizontal scroll area
   useEffect(() => {
-    if (scrollAreaRef.current) {
-      let scrollPosition = 0;
-      const container = scrollAreaRef.current;
-      const scrollStep = 240; // Width of each card
+    const scrollElement = scrollAreaRef.current;
+    
+    if (scrollElement) {
+      if (scrollIntervalRef.current) clearInterval(scrollIntervalRef.current);
       
       scrollIntervalRef.current = setInterval(() => {
-        const maxScroll = container.scrollWidth - container.clientWidth;
+        const maxScrollWidth = scrollElement.scrollWidth - scrollElement.clientWidth;
         
-        if (scrollPosition >= maxScroll) {
-          scrollPosition = 0;
-        } else {
-          scrollPosition += scrollStep;
+        let newPosition = currentScrollPosition + 240; // Width of each location card
+        
+        if (newPosition >= maxScrollWidth) {
+          newPosition = 0;
         }
         
-        container.scrollTo({
-          left: scrollPosition,
+        scrollElement.scrollTo({
+          left: newPosition,
           behavior: 'smooth'
         });
+        
+        setCurrentScrollPosition(newPosition);
       }, 2000); // 2 seconds interval
     }
     
     return () => {
       if (scrollIntervalRef.current) clearInterval(scrollIntervalRef.current);
     };
-  }, []);
+  }, [currentScrollPosition]);
 
   const locations = [
     {

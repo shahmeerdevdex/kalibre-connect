@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from "react";
 import { 
   Carousel,
@@ -13,27 +12,48 @@ import { MapPin } from "lucide-react";
 const Testimonials = () => {
   const [studentApi, setStudentApi] = React.useState<CarouselApi>();
   const [partnerApi, setPartnerApi] = React.useState<CarouselApi>();
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const partnerIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const partnerIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    if (studentApi && partnerApi) {
+    if (studentApi) {
+      // Clear any existing interval
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      
       // Set up auto-scrolling for student testimonials
       intervalRef.current = setInterval(() => {
-        studentApi.scrollNext();
-      }, 5000); // 5 seconds interval
-      
-      // Set up auto-scrolling for partner testimonials
-      partnerIntervalRef.current = setInterval(() => {
-        partnerApi.scrollNext();
-      }, 5000); // 5 seconds interval
+        if (studentApi.canScrollNext()) {
+          studentApi.scrollNext();
+        } else {
+          studentApi.scrollTo(0);
+        }
+      }, 2000); // 2 seconds interval
     }
     
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [studentApi]);
+
+  useEffect(() => {
+    if (partnerApi) {
+      // Clear any existing interval
+      if (partnerIntervalRef.current) clearInterval(partnerIntervalRef.current);
+      
+      // Set up auto-scrolling for partner testimonials
+      partnerIntervalRef.current = setInterval(() => {
+        if (partnerApi.canScrollNext()) {
+          partnerApi.scrollNext();
+        } else {
+          partnerApi.scrollTo(0);
+        }
+      }, 2000); // 2 seconds interval
+    }
+    
+    return () => {
       if (partnerIntervalRef.current) clearInterval(partnerIntervalRef.current);
     };
-  }, [studentApi, partnerApi]);
+  }, [partnerApi]);
 
   const studentTestimonials = [
     {
@@ -142,7 +162,7 @@ const Testimonials = () => {
         </div>
         
         <div className="mb-16">
-          <h3 className="text-xl font-semibold text-primary mb-8 text-center">
+          <h3 className="text-xl font-display font-semibold text-primary mb-8 text-center">
             Student Testimonials
           </h3>
           
@@ -179,7 +199,7 @@ const Testimonials = () => {
         </div>
         
         <div>
-          <h3 className="text-xl font-semibold text-primary mb-8 text-center">
+          <h3 className="text-xl font-display font-semibold text-primary mb-8 text-center">
             Industry Partner Testimonials
           </h3>
           
