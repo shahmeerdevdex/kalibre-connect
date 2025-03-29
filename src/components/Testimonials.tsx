@@ -1,15 +1,40 @@
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { 
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi
 } from "@/components/ui/carousel";
 import { MapPin } from "lucide-react";
 
 const Testimonials = () => {
+  const [studentApi, setStudentApi] = React.useState<CarouselApi>();
+  const [partnerApi, setPartnerApi] = React.useState<CarouselApi>();
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const partnerIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  useEffect(() => {
+    if (studentApi && partnerApi) {
+      // Set up auto-scrolling for student testimonials
+      intervalRef.current = setInterval(() => {
+        studentApi.scrollNext();
+      }, 5000); // 5 seconds interval
+      
+      // Set up auto-scrolling for partner testimonials
+      partnerIntervalRef.current = setInterval(() => {
+        partnerApi.scrollNext();
+      }, 5000); // 5 seconds interval
+    }
+    
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      if (partnerIntervalRef.current) clearInterval(partnerIntervalRef.current);
+    };
+  }, [studentApi, partnerApi]);
+
   const studentTestimonials = [
     {
       quote: "Kalibre's CTH program gave me the skills and confidence to excel. I'm now a Front Office Manager at a luxury hotel in Dubai!",
@@ -108,7 +133,7 @@ const Testimonials = () => {
     <section className="py-24 bg-white">
       <div className="section-container">
         <div className="text-center mb-16">
-          <span className="inline-block px-3 py-1 mb-4 text-xs font-medium rounded-full bg-kalibre-100 text-kalibre-800 uppercase tracking-wide">
+          <span className="inline-block px-3 py-1 mb-4 text-xs font-medium rounded-full bg-primary/10 text-primary uppercase tracking-wide">
             Testimonials
           </span>
           <h2 className="section-heading">
@@ -117,13 +142,14 @@ const Testimonials = () => {
         </div>
         
         <div className="mb-16">
-          <h3 className="text-xl font-semibold text-kalibre-800 mb-8 text-center">
+          <h3 className="text-xl font-semibold text-primary mb-8 text-center">
             Student Testimonials
           </h3>
           
           <Carousel 
             opts={{ loop: true, align: "start" }}
             className="mx-auto"
+            setApi={setStudentApi}
           >
             <CarouselContent>
               {studentTestimonials.map((testimonial, index) => (
@@ -131,15 +157,15 @@ const Testimonials = () => {
                   <div className="glassmorphism-card rounded-xl overflow-hidden h-full transition-all duration-300 hover:shadow-lg hover:scale-105 mx-2">
                     <div className="flex flex-col h-full">
                       <div className="p-6 flex-grow">
-                        <div className="text-3xl text-kalibre-300 mb-4">🎤</div>
+                        <div className="text-3xl text-primary/60 mb-4">🎤</div>
                         <p className="text-kalibre-700 italic text-sm mb-4">"{testimonial.quote}"</p>
                         <div>
                           <h4 className="font-medium text-kalibre-900">— {testimonial.name}</h4>
                           <p className="text-kalibre-600 text-xs">{testimonial.position}</p>
                         </div>
                       </div>
-                      <div className="p-3 bg-kalibre-50 flex items-center">
-                        <MapPin size={14} className="text-kalibre-600 mr-1" />
+                      <div className="p-3 bg-primary/5 flex items-center">
+                        <MapPin size={14} className="text-primary mr-1" />
                         <span className="text-kalibre-600 text-xs">{testimonial.location}</span>
                       </div>
                     </div>
@@ -153,13 +179,14 @@ const Testimonials = () => {
         </div>
         
         <div>
-          <h3 className="text-xl font-semibold text-kalibre-800 mb-8 text-center">
+          <h3 className="text-xl font-semibold text-primary mb-8 text-center">
             Industry Partner Testimonials
           </h3>
           
           <Carousel 
             opts={{ loop: true, align: "start" }}
             className="mx-auto"
+            setApi={setPartnerApi}
           >
             <CarouselContent>
               {partnerTestimonials.map((testimonial, index) => (
@@ -167,7 +194,7 @@ const Testimonials = () => {
                   <div className="glassmorphism-card rounded-xl overflow-hidden h-full transition-all duration-300 hover:shadow-lg hover:scale-105 mx-2">
                     <div className="flex flex-col h-full">
                       <div className="p-6 flex-grow">
-                        <div className="text-3xl text-kalibre-300 mb-4">🏨</div>
+                        <div className="text-3xl text-primary/60 mb-4">🏨</div>
                         <p className="text-kalibre-700 italic text-sm mb-4">"{testimonial.quote}"</p>
                         <div>
                           <h4 className="font-medium text-kalibre-900">— {testimonial.name}</h4>
