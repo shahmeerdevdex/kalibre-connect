@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from "react";
+
+import React, { useEffect, useRef, useState } from "react";
 import { Briefcase, MapPin, Building, Users, CheckCircle, ArrowLeft, ArrowRight } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { 
@@ -14,11 +15,13 @@ import { Button } from "@/components/ui/button";
 
 const Placement = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const scrollAreaRef = useRef<HTMLDivElement>(null);
-  const [carouselApi, setCarouselApi] = React.useState<CarouselApi>();
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [carouselApi, setCarouselApi] = useState<CarouselApi>();
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
-  const scrollIntervalRef = useRef<NodeJS.Timeout | null>(null);
-  const [currentScrollPosition, setCurrentScrollPosition] = React.useState(0);
+  const autoScrollIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -56,7 +59,7 @@ const Placement = () => {
         } else {
           carouselApi.scrollTo(0);
         }
-      }, 2000); // 2 seconds interval
+      }, 4000); // 4 seconds interval
     }
     
     return () => {
@@ -64,57 +67,87 @@ const Placement = () => {
     };
   }, [carouselApi]);
 
-  const scrollLeft = () => {
-    if (scrollAreaRef.current) {
-      const newPosition = Math.max(0, currentScrollPosition - 240);
-      scrollAreaRef.current.scrollTo({
-        left: newPosition,
-        behavior: 'smooth'
-      });
-      setCurrentScrollPosition(newPosition);
+  // Update scroll buttons state
+  const updateScrollButtonState = () => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 5); // 5px buffer for rounding errors
+      setScrollPosition(scrollLeft);
     }
   };
 
-  const scrollRight = () => {
-    if (scrollAreaRef.current) {
-      const maxScrollWidth = scrollAreaRef.current.scrollWidth - scrollAreaRef.current.clientWidth;
-      const newPosition = Math.min(maxScrollWidth, currentScrollPosition + 240);
-      scrollAreaRef.current.scrollTo({
-        left: newPosition,
-        behavior: 'smooth'
-      });
-      setCurrentScrollPosition(newPosition);
-    }
-  };
-
+  // Initialize scroll state
   useEffect(() => {
-    const scrollElement = scrollAreaRef.current;
-    
-    if (scrollElement) {
-      if (scrollIntervalRef.current) clearInterval(scrollIntervalRef.current);
-      
-      scrollIntervalRef.current = setInterval(() => {
-        const maxScrollWidth = scrollElement.scrollWidth - scrollElement.clientWidth;
-        
-        let newPosition = currentScrollPosition + 240; // Width of each location card
-        
-        if (newPosition >= maxScrollWidth) {
-          newPosition = 0;
-        }
-        
-        scrollElement.scrollTo({
-          left: newPosition,
-          behavior: 'smooth'
-        });
-        
-        setCurrentScrollPosition(newPosition);
-      }, 5000); // 5 seconds interval
+    const container = scrollContainerRef.current;
+    if (container) {
+      updateScrollButtonState();
+      container.addEventListener('scroll', updateScrollButtonState);
     }
     
     return () => {
-      if (scrollIntervalRef.current) clearInterval(scrollIntervalRef.current);
+      if (container) {
+        container.removeEventListener('scroll', updateScrollButtonState);
+      }
     };
-  }, [currentScrollPosition]);
+  }, []);
+
+  // Set up auto-scroll functionality
+  useEffect(() => {
+    if (autoScrollIntervalRef.current) {
+      clearInterval(autoScrollIntervalRef.current);
+    }
+    
+    autoScrollIntervalRef.current = setInterval(() => {
+      if (scrollContainerRef.current) {
+        const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+        
+        if (scrollLeft >= scrollWidth - clientWidth - 5) {
+          // Reset to beginning when reached the end
+          scrollContainerRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          // Scroll to next card
+          scrollContainerRef.current.scrollTo({
+            left: scrollLeft + 240,
+            behavior: 'smooth'
+          });
+        }
+        
+        // Update button states after scrolling
+        setTimeout(updateScrollButtonState, 500);
+      }
+    }, 5000); // Auto scroll every 5 seconds
+    
+    return () => {
+      if (autoScrollIntervalRef.current) {
+        clearInterval(autoScrollIntervalRef.current);
+      }
+    };
+  }, []);
+
+  // Handle manual scroll buttons
+  const handleScrollLeft = () => {
+    if (scrollContainerRef.current) {
+      const newPosition = Math.max(0, scrollPosition - 240);
+      scrollContainerRef.current.scrollTo({
+        left: newPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const handleScrollRight = () => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const maxScroll = container.scrollWidth - container.clientWidth;
+      const newPosition = Math.min(maxScroll, scrollPosition + 240);
+      
+      container.scrollTo({
+        left: newPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   const locations = [
     {
@@ -320,11 +353,9 @@ const Placement = () => {
           <h3 className="text-2xl font-display font-semibold text-ocean-500 mb-8 text-center">Placement Destinations</h3>
           
           <div className="relative">
-            <ScrollArea className="h-[380px] w-full rounded-md">
-              <div 
-                className="flex space-x-4 pb-4"
-                ref={scrollAreaRef}
-              >
+            {/* Replace ScrollArea with simple div for more control */}
+            <div className="w-full overflow-x-auto pb-4" ref={scrollContainerRef} style={{ scrollBehavior: 'smooth' }}>
+              <div className="flex space-x-4">
                 {locations.map((location, index) => (
                   <div 
                     key={index} 
@@ -350,14 +381,15 @@ const Placement = () => {
                   </div>
                 ))}
               </div>
-            </ScrollArea>
+            </div>
             
             <div className="flex justify-center mt-4 gap-2">
               <Button 
                 variant="outline" 
                 size="icon" 
                 className="rounded-full"
-                onClick={scrollLeft}
+                onClick={handleScrollLeft}
+                disabled={!canScrollLeft}
               >
                 <ArrowLeft className="h-4 w-4" />
                 <span className="sr-only">Scroll left</span>
@@ -366,7 +398,8 @@ const Placement = () => {
                 variant="outline" 
                 size="icon" 
                 className="rounded-full"
-                onClick={scrollRight}
+                onClick={handleScrollRight}
+                disabled={!canScrollRight}
               >
                 <ArrowRight className="h-4 w-4" />
                 <span className="sr-only">Scroll right</span>
