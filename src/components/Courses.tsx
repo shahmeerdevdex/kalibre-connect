@@ -34,6 +34,38 @@ const Courses = () => {
 
   const courses = [
     {
+      title: "L2 Award in Cookery Skills",
+      level: "Level 2",
+      duration: "3 months",
+      image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      description: "A foundational program for aspiring chefs to learn basic cookery skills, food safety, and kitchen operations.",
+      highlights: ["Entry-level qualification", "Practical cooking techniques", "Food safety certification"]
+    },
+    {
+      title: "L2 Certificate in Culinary Skills",
+      level: "Level 2",
+      duration: "6 months",
+      image: "https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      description: "Expand your culinary expertise with this comprehensive program covering diverse cooking methods, menu planning, and food presentation.",
+      highlights: ["Intermediate culinary techniques", "Menu development", "Professional kitchen experience"]
+    },
+    {
+      title: "L2 Certificate in Hospitality Practice",
+      level: "Level 2",
+      duration: "6 months",
+      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      description: "Develop essential skills across key hospitality areas including front desk operations, guest services, and basic hotel management.",
+      highlights: ["Customer service excellence", "Front desk operations", "Hospitality fundamentals"]
+    },
+    {
+      title: "L3 Diploma in Essentials of Hospitality & Tourism",
+      level: "Level 3",
+      duration: "9 months",
+      image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      description: "Gain comprehensive knowledge of both hospitality and tourism sectors with this integrated diploma program, preparing you for diverse roles.",
+      highlights: ["Dual hospitality & tourism focus", "Advanced customer experience", "Business operations"]
+    },
+    {
       title: "Diploma in Hospitality Management",
       level: "Level 4",
       duration: "12 months",
@@ -77,7 +109,7 @@ const Courses = () => {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {courses.map((course, index) => (
             <div 
               key={index} 
