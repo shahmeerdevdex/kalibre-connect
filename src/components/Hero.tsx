@@ -25,7 +25,7 @@ const Hero = () => {
               Empowering Future Hospitality Leaders
             </h1>
             
-            <h2 className="animate-fade-up text-xl md:text-2xl lg:text-3xl font-display font-semibold mb-5 text-ocean-700" style={{ animationDelay: "0.25s" }}>
+            <h2 className="animate-fade-up text-xl md:text-2xl lg:text-3xl font-display font-semibold mb-5 text-ocean-800" style={{ animationDelay: "0.25s" }}>
               Global Certifications & Job Placements
             </h2>
             
