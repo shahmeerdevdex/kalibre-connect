@@ -102,7 +102,8 @@ const Footer = () => {
         </div>
         
         <div className="pt-6 border-t border-kalibre-800 mb-6">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <h3 className="text-lg font-semibold mb-6 text-white">Our Global Offices</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6">
             <div className="flex items-start">
               <MapPin size={18} className="text-kalibre-400 mr-2 mt-1 flex-shrink-0" />
               <div>
@@ -132,6 +133,17 @@ const Footer = () => {
                 <p className="text-kalibre-300 text-xs mb-1">23rd St - Al Barsha, Dubai - United Arab Emirates</p>
                 <a href="tel:+971564178107" className="text-kalibre-300 hover:text-white transition-all-200 text-xs">
                   +971 564 178 107
+                </a>
+              </div>
+            </div>
+            
+            <div className="flex items-start">
+              <MapPin size={18} className="text-kalibre-400 mr-2 mt-1 flex-shrink-0" />
+              <div>
+                <h4 className="text-white text-sm font-medium mb-1">Malaysia Office</h4>
+                <p className="text-kalibre-300 text-xs mb-1">Kuala Lumpur, Malaysia</p>
+                <a href="tel:+60123456789" className="text-kalibre-300 hover:text-white transition-all-200 text-xs">
+                  +60 12 345 6789
                 </a>
               </div>
             </div>

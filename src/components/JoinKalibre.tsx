@@ -54,11 +54,19 @@ const JoinKalibre = () => {
               </div>
               <div className="flex items-center">
                 <MapPin size={18} className="text-kalibre-600 mr-2 flex-shrink-0" />
+                <span className="text-kalibre-700">Ireland</span>
+              </div>
+              <div className="flex items-center">
+                <MapPin size={18} className="text-kalibre-600 mr-2 flex-shrink-0" />
+                <span className="text-kalibre-700">USA</span>
+              </div>
+              <div className="flex items-center">
+                <MapPin size={18} className="text-kalibre-600 mr-2 flex-shrink-0" />
                 <span className="text-kalibre-700">Europe</span>
               </div>
               <div className="flex items-center">
                 <MapPin size={18} className="text-kalibre-600 mr-2 flex-shrink-0" />
-                <span className="text-kalibre-700">Middle East</span>
+                <span className="text-kalibre-700">UAE</span>
               </div>
               <div className="flex items-center">
                 <MapPin size={18} className="text-kalibre-600 mr-2 flex-shrink-0" />
@@ -66,11 +74,19 @@ const JoinKalibre = () => {
               </div>
               <div className="flex items-center">
                 <MapPin size={18} className="text-kalibre-600 mr-2 flex-shrink-0" />
-                <span className="text-kalibre-700">Central Asia</span>
+                <span className="text-kalibre-700">Malaysia</span>
               </div>
               <div className="flex items-center">
                 <MapPin size={18} className="text-kalibre-600 mr-2 flex-shrink-0" />
-                <span className="text-kalibre-700">South East Asia</span>
+                <span className="text-kalibre-700">Pakistan</span>
+              </div>
+              <div className="flex items-center">
+                <MapPin size={18} className="text-kalibre-600 mr-2 flex-shrink-0" />
+                <span className="text-kalibre-700">Indonesia</span>
+              </div>
+              <div className="flex items-center">
+                <MapPin size={18} className="text-kalibre-600 mr-2 flex-shrink-0" />
+                <span className="text-kalibre-700">Mauritius</span>
               </div>
             </div>
           </div>
