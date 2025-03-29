@@ -1,5 +1,4 @@
-
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { Briefcase, MapPin, Building, Users, CheckCircle, ArrowLeft, ArrowRight } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { 
@@ -15,11 +14,11 @@ import { Button } from "@/components/ui/button";
 
 const Placement = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const scrollAreaRef = useRef<HTMLDivElement>(null);
   const [carouselApi, setCarouselApi] = React.useState<CarouselApi>();
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const scrollIntervalRef = useRef<NodeJS.Timeout | null>(null);
-  const locationsContainerRef = useRef<HTMLDivElement>(null);
-  const [currentScrollPosition, setCurrentScrollPosition] = useState(0);
+  const [currentScrollPosition, setCurrentScrollPosition] = React.useState(0);
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -65,12 +64,10 @@ const Placement = () => {
     };
   }, [carouselApi]);
 
-  // Manual scroll functions for the destinations section
   const scrollLeft = () => {
-    if (locationsContainerRef.current) {
-      const container = locationsContainerRef.current;
+    if (scrollAreaRef.current) {
       const newPosition = Math.max(0, currentScrollPosition - 240);
-      container.scrollTo({
+      scrollAreaRef.current.scrollTo({
         left: newPosition,
         behavior: 'smooth'
       });
@@ -79,11 +76,10 @@ const Placement = () => {
   };
 
   const scrollRight = () => {
-    if (locationsContainerRef.current) {
-      const container = locationsContainerRef.current;
-      const maxScrollWidth = container.scrollWidth - container.clientWidth;
+    if (scrollAreaRef.current) {
+      const maxScrollWidth = scrollAreaRef.current.scrollWidth - scrollAreaRef.current.clientWidth;
       const newPosition = Math.min(maxScrollWidth, currentScrollPosition + 240);
-      container.scrollTo({
+      scrollAreaRef.current.scrollTo({
         left: newPosition,
         behavior: 'smooth'
       });
@@ -91,33 +87,29 @@ const Placement = () => {
     }
   };
 
-  // Automatic scrolling for destinations
   useEffect(() => {
-    const startAutoScroll = () => {
+    const scrollElement = scrollAreaRef.current;
+    
+    if (scrollElement) {
       if (scrollIntervalRef.current) clearInterval(scrollIntervalRef.current);
       
       scrollIntervalRef.current = setInterval(() => {
-        if (locationsContainerRef.current) {
-          const container = locationsContainerRef.current;
-          const maxScrollWidth = container.scrollWidth - container.clientWidth;
-          
-          let newPosition = currentScrollPosition + 240;
-          
-          if (newPosition >= maxScrollWidth) {
-            newPosition = 0;
-          }
-          
-          container.scrollTo({
-            left: newPosition,
-            behavior: 'smooth'
-          });
-          
-          setCurrentScrollPosition(newPosition);
+        const maxScrollWidth = scrollElement.scrollWidth - scrollElement.clientWidth;
+        
+        let newPosition = currentScrollPosition + 240; // Width of each location card
+        
+        if (newPosition >= maxScrollWidth) {
+          newPosition = 0;
         }
+        
+        scrollElement.scrollTo({
+          left: newPosition,
+          behavior: 'smooth'
+        });
+        
+        setCurrentScrollPosition(newPosition);
       }, 5000); // 5 seconds interval
-    };
-
-    startAutoScroll();
+    }
     
     return () => {
       if (scrollIntervalRef.current) clearInterval(scrollIntervalRef.current);
@@ -328,11 +320,10 @@ const Placement = () => {
           <h3 className="text-2xl font-display font-semibold text-ocean-500 mb-8 text-center">Placement Destinations</h3>
           
           <div className="relative">
-            <div className="overflow-hidden w-full">
+            <ScrollArea className="h-[380px] w-full rounded-md">
               <div 
-                ref={locationsContainerRef}
-                className="flex space-x-4 pb-6 overflow-x-auto scrollbar-hide"
-                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                className="flex space-x-4 pb-4"
+                ref={scrollAreaRef}
               >
                 {locations.map((location, index) => (
                   <div 
@@ -359,7 +350,7 @@ const Placement = () => {
                   </div>
                 ))}
               </div>
-            </div>
+            </ScrollArea>
             
             <div className="flex justify-center mt-4 gap-2">
               <Button 
