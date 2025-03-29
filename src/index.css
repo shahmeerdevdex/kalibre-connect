@@ -112,19 +112,19 @@
   }
 
   .glassmorphism {
-    @apply bg-white/70 dark:bg-kalibre-900/70 backdrop-blur-md border border-white/20 dark:border-kalibre-800/30 shadow-sm;
+    @apply bg-white/70 dark:bg-ocean-900/70 backdrop-blur-md border border-white/20 dark:border-ocean-800/30 shadow-sm;
   }
   
   .glassmorphism-card {
-    @apply bg-white/90 dark:bg-kalibre-900/80 backdrop-blur-lg border border-primary/10 dark:border-primary/20 shadow-md;
+    @apply bg-white/90 dark:bg-ocean-900/80 backdrop-blur-lg border border-ocean-200/30 dark:border-ocean-700/20 shadow-md;
   }
 
   .section-heading {
-    @apply text-3xl md:text-4xl lg:text-5xl font-display font-bold leading-tight mb-3 tracking-tight text-primary;
+    @apply text-3xl md:text-4xl lg:text-5xl font-display font-bold leading-tight mb-3 tracking-tight text-ocean-500;
   }
 
   .section-subheading {
-    @apply text-base md:text-lg lg:text-xl text-kalibre-600 max-w-3xl mb-12;
+    @apply text-base md:text-lg lg:text-xl text-ocean-600 max-w-3xl mb-12;
   }
   
   /* Enhanced Hover Effects */
