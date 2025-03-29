@@ -146,8 +146,8 @@ const Courses = () => {
             <CarouselContent>
               {courses.map((course, index) => (
                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 xl:basis-1/3">
-                  <div className="p-1">
-                    <div className="glassmorphism-card rounded-xl overflow-hidden transition-all duration-300 h-full hover:shadow-lg hover:translate-y-[-8px]">
+                  <div className="p-1 h-full">
+                    <div className="glassmorphism-card rounded-xl overflow-hidden transition-all duration-300 h-full flex flex-col hover:shadow-lg hover:translate-y-[-8px]">
                       <AspectRatio ratio={16/9} className="bg-kalibre-100 overflow-hidden">
                         <img 
                           src={course.image} 
@@ -156,7 +156,7 @@ const Courses = () => {
                         />
                       </AspectRatio>
                       <div className="h-2 bg-kalibre-700"></div>
-                      <div className="p-6">
+                      <div className="p-6 flex flex-col flex-grow">
                         <div className="flex justify-between items-start mb-4">
                           <div>
                             <h3 className="text-xl font-semibold text-kalibre-900">{course.title}</h3>
@@ -180,7 +180,7 @@ const Courses = () => {
                           {course.description}
                         </p>
                         
-                        <div className="mb-6">
+                        <div className="mb-6 flex-grow">
                           <h4 className="text-sm font-medium text-kalibre-800 mb-2">Highlights:</h4>
                           <ul className="text-sm text-kalibre-600">
                             {course.highlights.map((highlight, i) => (
@@ -194,7 +194,7 @@ const Courses = () => {
                         
                         <a 
                           href="#apply" 
-                          className="inline-flex items-center text-kalibre-800 font-medium hover:text-kalibre-600 transition-all-200 text-sm group"
+                          className="inline-flex items-center text-kalibre-800 font-medium hover:text-kalibre-600 transition-all-200 text-sm group mt-auto"
                         >
                           Learn more
                           <ExternalLink size={14} className="ml-1 transform group-hover:translate-x-1 transition-transform" />

@@ -92,78 +92,58 @@ const Footer = () => {
           
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
-            <div className="flex flex-wrap -mx-3">
-              <div className="w-full px-3 mb-6">
-                <div className="flex items-center">
-                  <Mail size={18} className="text-kalibre-400 mr-3 flex-shrink-0" />
-                  <a href="mailto:info@thekalibre.com" className="text-kalibre-300 hover:text-white transition-all-200 text-sm">
-                    info@thekalibre.com
-                  </a>
-                </div>
+            <div className="flex items-center mb-6">
+              <Mail size={18} className="text-kalibre-400 mr-3 flex-shrink-0" />
+              <a href="mailto:info@thekalibre.com" className="text-kalibre-300 hover:text-white transition-all-200 text-sm">
+                info@thekalibre.com
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div className="pt-6 border-t border-kalibre-800 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="flex items-start">
+              <MapPin size={18} className="text-kalibre-400 mr-2 mt-1 flex-shrink-0" />
+              <div>
+                <h4 className="text-white text-sm font-medium mb-1">UK Office</h4>
+                <p className="text-kalibre-300 text-xs mb-1">9 Isabel Terrace, Pragel Street, London, England, E13 9DN</p>
+                <a href="tel:+447471737541" className="text-kalibre-300 hover:text-white transition-all-200 text-xs">
+                  +44 747 173 7541
+                </a>
               </div>
-              
-              <div className="w-full sm:w-1/2 px-3 mb-4">
-                <h4 className="text-white text-sm font-medium mb-2">UK Office</h4>
-                <div className="flex items-start">
-                  <MapPin size={18} className="text-kalibre-400 mr-2 mt-1 flex-shrink-0" />
-                  <span className="text-kalibre-300 text-xs">
-                    9 Isabel Terrace, Pragel Street,<br />
-                    London, England, E13 9DN
-                  </span>
-                </div>
-                <div className="flex items-center mt-1 ml-5">
-                  <a href="tel:+447471737541" className="text-kalibre-300 hover:text-white transition-all-200 text-xs">
-                    +44 747 173 7541
-                  </a>
-                </div>
+            </div>
+            
+            <div className="flex items-start">
+              <MapPin size={18} className="text-kalibre-400 mr-2 mt-1 flex-shrink-0" />
+              <div>
+                <h4 className="text-white text-sm font-medium mb-1">USA Office</h4>
+                <p className="text-kalibre-300 text-xs mb-1">203 Courthouse Drive, Morrisville, NC, 27560</p>
+                <a href="tel:+19199192882" className="text-kalibre-300 hover:text-white transition-all-200 text-xs">
+                  +1 919 919 2882
+                </a>
               </div>
-              
-              <div className="w-full sm:w-1/2 px-3 mb-4">
-                <h4 className="text-white text-sm font-medium mb-2">USA Office</h4>
-                <div className="flex items-start">
-                  <MapPin size={18} className="text-kalibre-400 mr-2 mt-1 flex-shrink-0" />
-                  <span className="text-kalibre-300 text-xs">
-                    203 Courthouse Drive,<br />
-                    Morrisville, NC, 27560
-                  </span>
-                </div>
-                <div className="flex items-center mt-1 ml-5">
-                  <a href="tel:+19199192882" className="text-kalibre-300 hover:text-white transition-all-200 text-xs">
-                    +1 919 919 2882
-                  </a>
-                </div>
+            </div>
+            
+            <div className="flex items-start">
+              <MapPin size={18} className="text-kalibre-400 mr-2 mt-1 flex-shrink-0" />
+              <div>
+                <h4 className="text-white text-sm font-medium mb-1">Dubai Office</h4>
+                <p className="text-kalibre-300 text-xs mb-1">23rd St - Al Barsha, Dubai - United Arab Emirates</p>
+                <a href="tel:+971564178107" className="text-kalibre-300 hover:text-white transition-all-200 text-xs">
+                  +971 564 178 107
+                </a>
               </div>
-              
-              <div className="w-full sm:w-1/2 px-3 mb-4">
-                <h4 className="text-white text-sm font-medium mb-2">Dubai Office</h4>
-                <div className="flex items-start">
-                  <MapPin size={18} className="text-kalibre-400 mr-2 mt-1 flex-shrink-0" />
-                  <span className="text-kalibre-300 text-xs">
-                    23rd St - Al Barsha,<br />
-                    Dubai - United Arab Emirates
-                  </span>
-                </div>
-                <div className="flex items-center mt-1 ml-5">
-                  <a href="tel:+971564178107" className="text-kalibre-300 hover:text-white transition-all-200 text-xs">
-                    +971 564 178 107
-                  </a>
-                </div>
-              </div>
-              
-              <div className="w-full sm:w-1/2 px-3 mb-4">
-                <h4 className="text-white text-sm font-medium mb-2">Pakistan Office</h4>
-                <div className="flex items-start">
-                  <MapPin size={18} className="text-kalibre-400 mr-2 mt-1 flex-shrink-0" />
-                  <span className="text-kalibre-300 text-xs">
-                    Gold Crest Mall, Sector DD, Phase 4<br />
-                    6th Floor, DHA, Lahore
-                  </span>
-                </div>
-                <div className="flex items-center mt-1 ml-5">
-                  <a href="tel:+923100300005" className="text-kalibre-300 hover:text-white transition-all-200 text-xs">
-                    +92 310 030 0005
-                  </a>
-                </div>
+            </div>
+            
+            <div className="flex items-start">
+              <MapPin size={18} className="text-kalibre-400 mr-2 mt-1 flex-shrink-0" />
+              <div>
+                <h4 className="text-white text-sm font-medium mb-1">Pakistan Office</h4>
+                <p className="text-kalibre-300 text-xs mb-1">Gold Crest Mall, Sector DD, Phase 4, 6th Floor, DHA, Lahore</p>
+                <a href="tel:+923100300005" className="text-kalibre-300 hover:text-white transition-all-200 text-xs">
+                  +92 310 030 0005
+                </a>
               </div>
             </div>
           </div>
