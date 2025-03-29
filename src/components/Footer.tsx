@@ -118,6 +118,17 @@ const Footer = () => {
             <div className="flex items-start">
               <MapPin size={18} className="text-kalibre-400 mr-2 mt-1 flex-shrink-0" />
               <div>
+                <h4 className="text-white text-sm font-medium mb-1">Ireland Office</h4>
+                <p className="text-kalibre-300 text-xs mb-1">Dublin, Ireland</p>
+                <a href="tel:+35312345678" className="text-kalibre-300 hover:text-white transition-all-200 text-xs">
+                  +353 1 234 5678
+                </a>
+              </div>
+            </div>
+            
+            <div className="flex items-start">
+              <MapPin size={18} className="text-kalibre-400 mr-2 mt-1 flex-shrink-0" />
+              <div>
                 <h4 className="text-white text-sm font-medium mb-1">USA Office</h4>
                 <p className="text-kalibre-300 text-xs mb-1">203 Courthouse Drive, Morrisville, NC, 27560</p>
                 <a href="tel:+19199192882" className="text-kalibre-300 hover:text-white transition-all-200 text-xs">
@@ -129,10 +140,32 @@ const Footer = () => {
             <div className="flex items-start">
               <MapPin size={18} className="text-kalibre-400 mr-2 mt-1 flex-shrink-0" />
               <div>
-                <h4 className="text-white text-sm font-medium mb-1">Dubai Office</h4>
+                <h4 className="text-white text-sm font-medium mb-1">Europe Office</h4>
+                <p className="text-kalibre-300 text-xs mb-1">Central European location</p>
+                <a href="tel:+431234567890" className="text-kalibre-300 hover:text-white transition-all-200 text-xs">
+                  +43 123 456 7890
+                </a>
+              </div>
+            </div>
+            
+            <div className="flex items-start">
+              <MapPin size={18} className="text-kalibre-400 mr-2 mt-1 flex-shrink-0" />
+              <div>
+                <h4 className="text-white text-sm font-medium mb-1">UAE Office</h4>
                 <p className="text-kalibre-300 text-xs mb-1">23rd St - Al Barsha, Dubai - United Arab Emirates</p>
                 <a href="tel:+971564178107" className="text-kalibre-300 hover:text-white transition-all-200 text-xs">
                   +971 564 178 107
+                </a>
+              </div>
+            </div>
+            
+            <div className="flex items-start">
+              <MapPin size={18} className="text-kalibre-400 mr-2 mt-1 flex-shrink-0" />
+              <div>
+                <h4 className="text-white text-sm font-medium mb-1">Saudi Arabia Office</h4>
+                <p className="text-kalibre-300 text-xs mb-1">Riyadh, Saudi Arabia</p>
+                <a href="tel:+966501234567" className="text-kalibre-300 hover:text-white transition-all-200 text-xs">
+                  +966 50 123 4567
                 </a>
               </div>
             </div>
@@ -155,6 +188,28 @@ const Footer = () => {
                 <p className="text-kalibre-300 text-xs mb-1">Gold Crest Mall, Sector DD, Phase 4, 6th Floor, DHA, Lahore</p>
                 <a href="tel:+923100300005" className="text-kalibre-300 hover:text-white transition-all-200 text-xs">
                   +92 310 030 0005
+                </a>
+              </div>
+            </div>
+            
+            <div className="flex items-start">
+              <MapPin size={18} className="text-kalibre-400 mr-2 mt-1 flex-shrink-0" />
+              <div>
+                <h4 className="text-white text-sm font-medium mb-1">Indonesia Office</h4>
+                <p className="text-kalibre-300 text-xs mb-1">Jakarta, Indonesia</p>
+                <a href="tel:+6281234567890" className="text-kalibre-300 hover:text-white transition-all-200 text-xs">
+                  +62 812 3456 7890
+                </a>
+              </div>
+            </div>
+            
+            <div className="flex items-start">
+              <MapPin size={18} className="text-kalibre-400 mr-2 mt-1 flex-shrink-0" />
+              <div>
+                <h4 className="text-white text-sm font-medium mb-1">Mauritius Office</h4>
+                <p className="text-kalibre-300 text-xs mb-1">Port Louis, Mauritius</p>
+                <a href="tel:+2301234567" className="text-kalibre-300 hover:text-white transition-all-200 text-xs">
+                  +230 123 4567
                 </a>
               </div>
             </div>

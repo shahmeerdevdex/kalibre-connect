@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from "react";
 import { Briefcase, MapPin, Building, Users, CheckCircle } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -42,33 +41,63 @@ const Placement = () => {
   const locations = [
     {
       icon: <MapPin size={24} className="text-kalibre-800" />,
-      region: "Pakistan",
-      image: "https://images.unsplash.com/photo-1500673922987-e212871fec22?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      description: "Premier hotels and resorts in Islamabad, Lahore, Karachi, and other major cities."
-    },
-    {
-      icon: <MapPin size={24} className="text-kalibre-800" />,
-      region: "Saudi Arabia",
-      image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      description: "Luxury accommodations in Riyadh, Jeddah, and prestigious holy cities."
-    },
-    {
-      icon: <MapPin size={24} className="text-kalibre-800" />,
-      region: "Middle East",
-      image: "https://images.unsplash.com/photo-1543362995-788a2e5ba54b?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      description: "5-star hotel chains across Dubai, Abu Dhabi, Doha, and other Gulf destinations."
-    },
-    {
-      icon: <MapPin size={24} className="text-kalibre-800" />,
       region: "United Kingdom",
       image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       description: "Prestigious establishments in London and other major UK cities."
     },
     {
       icon: <MapPin size={24} className="text-kalibre-800" />,
+      region: "Ireland",
+      image: "https://images.unsplash.com/photo-1500673922987-e212871fec22?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      description: "Leading hospitality venues across Dublin and Irish tourist destinations."
+    },
+    {
+      icon: <MapPin size={24} className="text-kalibre-800" />,
+      region: "USA",
+      image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      description: "Premium hotel chains in New York, Miami, Los Angeles and other major cities."
+    },
+    {
+      icon: <MapPin size={24} className="text-kalibre-800" />,
       region: "Europe",
       image: "https://images.unsplash.com/photo-1519442249543-444325a69c92?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
       description: "International hotel groups across European capitals and resort destinations."
+    },
+    {
+      icon: <MapPin size={24} className="text-kalibre-800" />,
+      region: "UAE",
+      image: "https://images.unsplash.com/photo-1543362995-788a2e5ba54b?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      description: "5-star hotel chains across Dubai, Abu Dhabi, and other UAE destinations."
+    },
+    {
+      icon: <MapPin size={24} className="text-kalibre-800" />,
+      region: "Saudi Arabia",
+      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      description: "Luxury accommodations in Riyadh, Jeddah, and prestigious holy cities."
+    },
+    {
+      icon: <MapPin size={24} className="text-kalibre-800" />,
+      region: "Malaysia",
+      image: "https://images.unsplash.com/photo-1500673922987-e212871fec22?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      description: "Leading hospitality venues across Kuala Lumpur and Malaysian tourist spots."
+    },
+    {
+      icon: <MapPin size={24} className="text-kalibre-800" />,
+      region: "Pakistan",
+      image: "https://images.unsplash.com/photo-1500673922987-e212871fec22?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      description: "Premier hotels and resorts in Islamabad, Lahore, Karachi, and other major cities."
+    },
+    {
+      icon: <MapPin size={24} className="text-kalibre-800" />,
+      region: "Indonesia",
+      image: "https://images.unsplash.com/photo-1543362995-788a2e5ba54b?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      description: "Luxury resorts and hotels in Bali, Jakarta, and other Indonesian destinations."
+    },
+    {
+      icon: <MapPin size={24} className="text-kalibre-800" />,
+      region: "Mauritius",
+      image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      description: "Beach resorts and luxury hotels across this tropical island destination."
     }
   ];
 
