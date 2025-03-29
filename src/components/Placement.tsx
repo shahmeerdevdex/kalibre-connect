@@ -202,9 +202,9 @@ const Placement = () => {
           </div>
           
           <div className="reveal opacity-0" style={{ transitionDelay: "0.2s" }}>
-            <AspectRatio ratio={4/3} className="rounded-xl overflow-hidden">
+          <AspectRatio ratio={4/3} className="rounded-xl overflow-hidden">
               <img 
-                src="/images/placement-main.jpg"
+                src="https://res.cloudinary.com/dzwdsxj7s/image/upload/v1743265281/kaliber/ohlvdfenqhhdwqoazjdr.jpg"
                 alt="Global career opportunities" 
                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
               />

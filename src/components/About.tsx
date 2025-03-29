@@ -80,9 +80,9 @@ const About = () => {
               <div className="absolute -top-4 -left-4 w-full h-full rounded-xl bg-kalibre-200 -z-10"></div>
               <div className="glassmorphism-card rounded-xl overflow-hidden transform hover:rotate-2 transition-all duration-500">
                 <div className="w-full overflow-hidden">
-                  <AspectRatio ratio={4/3}>
+                <AspectRatio ratio={4/3}>
                     <img 
-                      src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" 
+                      src="https://res.cloudinary.com/dzwdsxj7s/image/upload/v1743260832/kaliber/jcbcy5rjrrmeclf5uqmi.jpg" 
                       alt="Hospitality students in classroom" 
                       className="object-cover w-full h-full transition-transform duration-700 hover:scale-110"
                     />
@@ -90,8 +90,8 @@ const About = () => {
                 </div>
                 <div className="p-6">
                   <div className="flex items-center mb-4">
-                    <img 
-                      src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" 
+                  <img 
+                      src="/public/only_logo.png" 
                       alt="CTH Logo" 
                       className="h-12 mr-4"
                     />

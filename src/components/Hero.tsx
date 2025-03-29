@@ -51,11 +51,11 @@ const Hero = () => {
           
           <div className="hidden md:block animate-fade-up" style={{ animationDelay: "0.5s" }}>
             <div className="relative p-2 bg-white/50 backdrop-blur-sm rounded-2xl shadow-lg transform hover:rotate-1 transition-all duration-500">
-              <AspectRatio ratio={4/3} className="rounded-xl overflow-hidden">
+            <AspectRatio ratio={16/9} className="rounded-xl overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" 
-                  alt="Students in hospitality training" 
-                  className="object-cover w-full h-full"
+                  src="https://res.cloudinary.com/dzwdsxj7s/image/upload/v1743260832/kaliber/vncfmllj5gtdos1ezcfy.jpg" 
+                  alt="Student learning hospitality" 
+                  className="object-containx w-full h-full"
                 />
               </AspectRatio>
               <div className="absolute -bottom-5 -right-5 p-4 bg-white rounded-xl shadow-md">
@@ -69,7 +69,7 @@ const Hero = () => {
         <div className="animate-fade-up mt-12 md:mt-16" style={{ animationDelay: "0.6s" }}>
           <h3 className="text-xl font-semibold text-kalibre-800 mb-6 text-center">Why Kalibre Stands Out?</h3>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6" style={{marginBottom:"5px"}}>
             <div className="glassmorphism-card rounded-xl p-6 hover:shadow-lg transition-all">
               <div className="flex items-center mb-4">
                 <GraduationCap className="text-kalibre-700 mr-2" size={24} />
