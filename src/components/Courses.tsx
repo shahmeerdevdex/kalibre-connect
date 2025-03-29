@@ -2,9 +2,13 @@
 import React, { useEffect, useRef } from "react";
 import { GraduationCap, Clock, Award, ExternalLink } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Slider } from "@/components/ui/slider";
 
 const Courses = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [currentSlide, setCurrentSlide] = React.useState(0);
+  const carouselApi = React.useRef<any>(null);
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -31,6 +35,27 @@ const Courses = () => {
       }
     };
   }, []);
+
+  // Update slider when carousel changes
+  React.useEffect(() => {
+    if (!carouselApi.current) return;
+    
+    const onChange = () => {
+      if (!carouselApi.current) return;
+      setCurrentSlide(carouselApi.current.selectedScrollSnap());
+    };
+
+    carouselApi.current?.on("select", onChange);
+    return () => {
+      carouselApi.current?.off("select", onChange);
+    };
+  }, [carouselApi]);
+
+  // Update carousel when slider changes
+  const handleSliderChange = (value: number[]) => {
+    setCurrentSlide(value[0]);
+    carouselApi.current?.scrollTo(value[0]);
+  };
 
   const courses = [
     {
@@ -92,9 +117,9 @@ const Courses = () => {
   ];
 
   return (
-    <section id="courses" className="py-24">
+    <section id="courses" className="py-16 md:py-20">
       <div className="section-container" ref={sectionRef}>
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <div className="reveal opacity-0">
             <span className="inline-block px-3 py-1 mb-4 text-xs font-medium rounded-full bg-kalibre-100 text-kalibre-800 uppercase tracking-wide">
               Our Programs
@@ -109,70 +134,95 @@ const Courses = () => {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {courses.map((course, index) => (
-            <div 
-              key={index} 
-              className="reveal opacity-0 glassmorphism-card rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:translate-y-[-8px]"
-              style={{ transitionDelay: `${0.1 + index * 0.1}s` }}
-            >
-              <AspectRatio ratio={16/9} className="bg-kalibre-100 overflow-hidden">
-                <img 
-                  src={course.image} 
-                  alt={course.title} 
-                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-                />
-              </AspectRatio>
-              <div className="h-2 bg-kalibre-700"></div>
-              <div className="p-6">
-                <div className="flex justify-between items-start mb-4">
-                  <div>
-                    <h3 className="text-xl font-semibold text-kalibre-900">{course.title}</h3>
-                    <div className="flex items-center mt-2">
-                      <span className="bg-kalibre-100 text-kalibre-800 text-xs px-2 py-1 rounded font-medium flex items-center">
-                        <Award size={14} className="mr-1" />
-                        {course.level}
-                      </span>
-                      <span className="bg-kalibre-50 text-kalibre-700 text-xs px-2 py-1 rounded font-medium ml-2 flex items-center">
-                        <Clock size={14} className="mr-1" />
-                        {course.duration}
-                      </span>
+        <div className="reveal opacity-0 mb-10">
+          <Carousel 
+            className="w-full"
+            setApi={(api) => (carouselApi.current = api)}
+            opts={{
+              align: "start",
+              loop: false,
+            }}
+          >
+            <CarouselContent>
+              {courses.map((course, index) => (
+                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 xl:basis-1/3">
+                  <div className="p-1">
+                    <div className="glassmorphism-card rounded-xl overflow-hidden transition-all duration-300 h-full hover:shadow-lg hover:translate-y-[-8px]">
+                      <AspectRatio ratio={16/9} className="bg-kalibre-100 overflow-hidden">
+                        <img 
+                          src={course.image} 
+                          alt={course.title} 
+                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                        />
+                      </AspectRatio>
+                      <div className="h-2 bg-kalibre-700"></div>
+                      <div className="p-6">
+                        <div className="flex justify-between items-start mb-4">
+                          <div>
+                            <h3 className="text-xl font-semibold text-kalibre-900">{course.title}</h3>
+                            <div className="flex items-center mt-2">
+                              <span className="bg-kalibre-100 text-kalibre-800 text-xs px-2 py-1 rounded font-medium flex items-center">
+                                <Award size={14} className="mr-1" />
+                                {course.level}
+                              </span>
+                              <span className="bg-kalibre-50 text-kalibre-700 text-xs px-2 py-1 rounded font-medium ml-2 flex items-center">
+                                <Clock size={14} className="mr-1" />
+                                {course.duration}
+                              </span>
+                            </div>
+                          </div>
+                          <div className="w-12 h-12 rounded-full bg-kalibre-100 flex items-center justify-center">
+                            <GraduationCap size={20} className="text-kalibre-800" />
+                          </div>
+                        </div>
+                        
+                        <p className="text-kalibre-600 text-sm mb-4">
+                          {course.description}
+                        </p>
+                        
+                        <div className="mb-6">
+                          <h4 className="text-sm font-medium text-kalibre-800 mb-2">Highlights:</h4>
+                          <ul className="text-sm text-kalibre-600">
+                            {course.highlights.map((highlight, i) => (
+                              <li key={i} className="flex items-center mb-1">
+                                <span className="w-1.5 h-1.5 bg-kalibre-400 rounded-full mr-2"></span>
+                                {highlight}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        
+                        <a 
+                          href="#apply" 
+                          className="inline-flex items-center text-kalibre-800 font-medium hover:text-kalibre-600 transition-all-200 text-sm group"
+                        >
+                          Learn more
+                          <ExternalLink size={14} className="ml-1 transform group-hover:translate-x-1 transition-transform" />
+                        </a>
+                      </div>
                     </div>
                   </div>
-                  <div className="w-12 h-12 rounded-full bg-kalibre-100 flex items-center justify-center">
-                    <GraduationCap size={20} className="text-kalibre-800" />
-                  </div>
-                </div>
-                
-                <p className="text-kalibre-600 text-sm mb-4">
-                  {course.description}
-                </p>
-                
-                <div className="mb-6">
-                  <h4 className="text-sm font-medium text-kalibre-800 mb-2">Highlights:</h4>
-                  <ul className="text-sm text-kalibre-600">
-                    {course.highlights.map((highlight, i) => (
-                      <li key={i} className="flex items-center mb-1">
-                        <span className="w-1.5 h-1.5 bg-kalibre-400 rounded-full mr-2"></span>
-                        {highlight}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                
-                <a 
-                  href="#apply" 
-                  className="inline-flex items-center text-kalibre-800 font-medium hover:text-kalibre-600 transition-all-200 text-sm group"
-                >
-                  Learn more
-                  <ExternalLink size={14} className="ml-1 transform group-hover:translate-x-1 transition-transform" />
-                </a>
-              </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="flex items-center justify-end mt-2 space-x-2">
+              <CarouselPrevious className="static transform-none" />
+              <CarouselNext className="static transform-none" />
             </div>
-          ))}
+          </Carousel>
+          
+          <div className="mt-6 px-4">
+            <Slider
+              value={[currentSlide]}
+              max={courses.length - 1}
+              step={1}
+              onValueChange={handleSliderChange}
+              className="w-full"
+            />
+          </div>
         </div>
 
-        <div className="reveal opacity-0 mt-12 text-center">
+        <div className="reveal opacity-0 mt-8 text-center">
           <a 
             href="#apply" 
             className="inline-block bg-kalibre-800 text-white px-6 py-3 rounded-md font-medium hover:bg-kalibre-700 transition-all-200 transform hover:scale-105"

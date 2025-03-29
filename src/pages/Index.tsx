@@ -38,10 +38,15 @@ const Index = () => {
       <Navbar />
       <main className="flex-grow">
         <Hero />
+        <div className="py-4"></div>
         <About />
+        <div className="py-2"></div>
         <Courses />
+        <div className="py-2"></div>
         <Placement />
+        <div className="py-2"></div>
         <JoinKalibre />
+        <div className="py-2"></div>
         <Testimonials />
       </main>
       <Footer />

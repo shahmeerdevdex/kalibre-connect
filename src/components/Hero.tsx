@@ -1,11 +1,10 @@
-
 import React from "react";
 import { ArrowRight, Award, Briefcase, GraduationCap } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <section className="relative min-h-screen flex items-center pt-16 md:pt-20 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-kalibre-100 rounded-full blur-3xl opacity-40" />
@@ -21,13 +20,13 @@ const Hero = () => {
               </span>
             </div>
             
-            <h1 className="animate-fade-up text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight mb-6 text-kalibre-950" style={{ animationDelay: "0.2s" }}>
-              Empowering Future Hospitality Leaders with Global Certifications & Job Placements
+            <h1 className="animate-fade-up text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight mb-4 text-kalibre-950" style={{ animationDelay: "0.2s" }}>
+              Empowering Future Hospitality Leaders
             </h1>
             
-            <p className="animate-fade-up text-kalibre-800 text-xl font-semibold mb-3" style={{ animationDelay: "0.25s" }}>
-              Your Pathway to a Successful Hospitality Career Starts Here
-            </p>
+            <h2 className="animate-fade-up text-xl md:text-2xl lg:text-3xl font-display font-semibold mb-5 text-kalibre-700" style={{ animationDelay: "0.25s" }}>
+              Global Certifications & Job Placements
+            </h2>
             
             <p className="animate-fade-up text-kalibre-600 text-base max-w-xl mb-8" style={{ animationDelay: "0.3s" }}>
               Welcome to Kalibre, a premier hospitality education and placement specialist, operating under UK-based AAASK LTD. We are dedicated to shaping the next generation of hospitality professionals by offering globally recognized CTH certifications, hands-on industry training, and direct job placements in top hotels worldwide.
@@ -67,10 +66,10 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="animate-fade-up mt-16" style={{ animationDelay: "0.6s" }}>
+        <div className="animate-fade-up mt-12 md:mt-16" style={{ animationDelay: "0.6s" }}>
           <h3 className="text-xl font-semibold text-kalibre-800 mb-6 text-center">Why Kalibre Stands Out?</h3>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             <div className="glassmorphism-card rounded-xl p-6 hover:shadow-lg transition-all">
               <div className="flex items-center mb-4">
                 <GraduationCap className="text-kalibre-700 mr-2" size={24} />
