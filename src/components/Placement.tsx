@@ -1,5 +1,6 @@
+
 import React, { useEffect, useRef } from "react";
-import { Briefcase, MapPin, Building, Users } from "lucide-react";
+import { Briefcase, MapPin, Building, Users, CheckCircle } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { 
   Carousel,
@@ -95,6 +96,21 @@ const Placement = () => {
     }
   ];
 
+  const partners = [
+    "Marriott International",
+    "Hilton Worldwide",
+    "IHG Hotels & Resorts",
+    "Accor Group",
+    "Rotana Hotels",
+    "Jumeirah Group"
+  ];
+
+  const partnershipBenefits = [
+    "Guaranteed internship opportunities",
+    "Direct recruitment pathways",
+    "Global career mobility"
+  ];
+
   return (
     <section id="placement" className="py-24 bg-gradient-to-b from-kalibre-50 to-white">
       <div className="section-container" ref={sectionRef}>
@@ -109,8 +125,8 @@ const Placement = () => {
               </h2>
               <p className="text-kalibre-600 mb-8">
                 Beyond providing exceptional education, we take pride in connecting our graduates with 
-                exciting job opportunities across Pakistan and international destinations. Our extensive 
-                network of industry partners ensures that your career journey begins on the right foot.
+                exciting job opportunities across UK, Ireland, USA, Middle East, South East Asia and Central Asia. 
+                Our extensive network of industry partners ensures that your career journey begins on the right foot.
               </p>
             </div>
 
@@ -135,8 +151,8 @@ const Placement = () => {
                 <div>
                   <h3 className="text-lg font-semibold text-kalibre-900 mb-1">Industry Partnerships</h3>
                   <p className="text-kalibre-600 text-sm">
-                    We've established strong relationships with leading hospitality brands worldwide, 
-                    giving our graduates preferred access to exciting career opportunities.
+                    We've established strong relationships with leading hospitality brands worldwide 
+                    by giving our graduates preferred access to exciting career opportunities.
                   </p>
                 </div>
               </div>
@@ -159,11 +175,37 @@ const Placement = () => {
           <div className="reveal opacity-0" style={{ transitionDelay: "0.2s" }}>
             <AspectRatio ratio={4/3} className="rounded-xl overflow-hidden">
               <img 
-                src="https://images.unsplash.com/photo-1543362995-788a2e5ba54b?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                src="/images/placement-main.jpg"
                 alt="Global career opportunities" 
                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
               />
             </AspectRatio>
+          </div>
+        </div>
+
+        <div className="reveal opacity-0 mb-20">
+          <h3 className="text-2xl font-semibold text-kalibre-900 mb-8 text-center">Industry Placement Partners</h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
+            {partners.map((partner, index) => (
+              <div key={index} className="glassmorphism-card rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-105 p-4 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-kalibre-800 text-3xl mb-2">🏨</div>
+                  <h4 className="font-medium text-kalibre-900 text-sm">{partner}</h4>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="glassmorphism-card rounded-xl p-6">
+            <p className="text-kalibre-700 mb-4 text-center">These partnerships allow us to provide:</p>
+            <div className="grid md:grid-cols-3 gap-4">
+              {partnershipBenefits.map((benefit, index) => (
+                <div key={index} className="flex items-center bg-kalibre-50 p-3 rounded-lg">
+                  <CheckCircle size={20} className="text-kalibre-700 mr-2 flex-shrink-0" />
+                  <span className="text-kalibre-700 text-sm">{benefit}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
