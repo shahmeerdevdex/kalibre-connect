@@ -21,7 +21,7 @@ const Hero = () => {
               </span>
             </div>
             
-            <h1 className="animate-fade-up text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight mb-4 text-ocean-500" style={{ animationDelay: "0.2s" }}>
+            <h1 className="animate-fade-up text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight mb-4 text-[#26678D]" style={{ animationDelay: "0.2s" }}>
               Empowering Future Hospitality Leaders
             </h1>
             
