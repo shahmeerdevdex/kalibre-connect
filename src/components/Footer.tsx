@@ -3,8 +3,6 @@ import React from "react";
 import { Mail, Phone, MapPin, Instagram, Facebook, Linkedin, Twitter } from "lucide-react";
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-  
   return (
     <footer id="contact" className="bg-kalibre-900 text-white pt-20 pb-10">
       <div className="section-container">
@@ -17,7 +15,7 @@ const Footer = () => {
             </div>
             <p className="text-kalibre-300 text-sm mb-6">
               UK-based educational provider accredited by the prestigious CTH, offering internationally 
-              recognized hospitality courses with placement opportunities worldwide.
+              recognized hospitality courses with job placement opportunities worldwide.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-kalibre-400 hover:text-white transition-all-200">
@@ -94,20 +92,75 @@ const Footer = () => {
           
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
-            <ul className="space-y-4">
-              <li className="flex items-start">
-                <MapPin size={18} className="text-kalibre-400 mr-3 mt-1 flex-shrink-0" />
-                <span className="text-kalibre-300 text-sm">
-                  The Kalibre Education Center,<br />
-                  Main Campus, Islamabad, Pakistan
-                </span>
+            <ul className="space-y-6">
+              <li>
+                <h4 className="text-white text-sm font-medium mb-2">UK Office</h4>
+                <div className="flex items-start">
+                  <MapPin size={18} className="text-kalibre-400 mr-3 mt-1 flex-shrink-0" />
+                  <span className="text-kalibre-300 text-sm">
+                    9 Isabel Terrace, Pragel Street,<br />
+                    London, England, E13 9DN
+                  </span>
+                </div>
+                <div className="flex items-center mt-1">
+                  <Phone size={18} className="text-kalibre-400 mr-3 flex-shrink-0" />
+                  <a href="tel:+447471737541" className="text-kalibre-300 hover:text-white transition-all-200 text-sm">
+                    +44 747 173 7541
+                  </a>
+                </div>
               </li>
-              <li className="flex items-center">
-                <Phone size={18} className="text-kalibre-400 mr-3 flex-shrink-0" />
-                <a href="tel:+923001234567" className="text-kalibre-300 hover:text-white transition-all-200 text-sm">
-                  +92 300 123 4567
-                </a>
+              
+              <li>
+                <h4 className="text-white text-sm font-medium mb-2">USA Office</h4>
+                <div className="flex items-start">
+                  <MapPin size={18} className="text-kalibre-400 mr-3 mt-1 flex-shrink-0" />
+                  <span className="text-kalibre-300 text-sm">
+                    203 Courthouse Drive,<br />
+                    Morrisville, NC, 27560
+                  </span>
+                </div>
+                <div className="flex items-center mt-1">
+                  <Phone size={18} className="text-kalibre-400 mr-3 flex-shrink-0" />
+                  <a href="tel:+19199192882" className="text-kalibre-300 hover:text-white transition-all-200 text-sm">
+                    +1 919 919 2882
+                  </a>
+                </div>
               </li>
+              
+              <li>
+                <h4 className="text-white text-sm font-medium mb-2">Dubai Office</h4>
+                <div className="flex items-start">
+                  <MapPin size={18} className="text-kalibre-400 mr-3 mt-1 flex-shrink-0" />
+                  <span className="text-kalibre-300 text-sm">
+                    23rd St - Al Barsha,<br />
+                    Dubai - United Arab Emirates
+                  </span>
+                </div>
+                <div className="flex items-center mt-1">
+                  <Phone size={18} className="text-kalibre-400 mr-3 flex-shrink-0" />
+                  <a href="tel:+971564178107" className="text-kalibre-300 hover:text-white transition-all-200 text-sm">
+                    +971 564 178 107
+                  </a>
+                </div>
+              </li>
+              
+              <li>
+                <h4 className="text-white text-sm font-medium mb-2">Pakistan Office</h4>
+                <div className="flex items-start">
+                  <MapPin size={18} className="text-kalibre-400 mr-3 mt-1 flex-shrink-0" />
+                  <span className="text-kalibre-300 text-sm">
+                    Gold Crest Mall, Sector DD, Phase 4<br />
+                    6th Floor, DHA, Lahore
+                  </span>
+                </div>
+                <div className="flex items-center mt-1">
+                  <Phone size={18} className="text-kalibre-400 mr-3 flex-shrink-0" />
+                  <a href="tel:+923100300005" className="text-kalibre-300 hover:text-white transition-all-200 text-sm">
+                    +92 310 030 0005
+                  </a>
+                </div>
+              </li>
+              
               <li className="flex items-center">
                 <Mail size={18} className="text-kalibre-400 mr-3 flex-shrink-0" />
                 <a href="mailto:info@thekalibre.com" className="text-kalibre-300 hover:text-white transition-all-200 text-sm">
@@ -120,7 +173,7 @@ const Footer = () => {
         
         <div className="pt-8 border-t border-kalibre-800 text-center">
           <p className="text-kalibre-400 text-sm">
-            © {currentYear} The Kalibre. All rights reserved. CTH Accredited Education Provider.
+            © 2022 The Kalibre: operating under AAASK LTD, UK | Company Number: 14107209 All rights reserved. CTH Accredited Education Provider.
           </p>
         </div>
       </div>
