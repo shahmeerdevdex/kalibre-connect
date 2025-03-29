@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from "react";
 import { Briefcase, MapPin, Building, Users, CheckCircle } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -8,6 +9,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const Placement = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -240,28 +242,35 @@ const Placement = () => {
 
         <div className="reveal opacity-0 mb-20">
           <h3 className="text-2xl font-semibold text-kalibre-900 mb-8 text-center">Placement Destinations</h3>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-            {locations.map((location, index) => (
-              <div key={index} className="glassmorphism-card rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-105">
-                <AspectRatio ratio={1/1} className="bg-kalibre-100">
-                  <img 
-                    src={location.image} 
-                    alt={location.region} 
-                    className="w-full h-full object-cover"
-                  />
-                </AspectRatio>
-                <div className="p-4">
-                  <div className="flex items-center mb-2">
-                    <div className="w-8 h-8 rounded-full bg-kalibre-50 flex items-center justify-center mr-2 flex-shrink-0">
-                      {location.icon}
+          
+          <ScrollArea className="h-[380px] w-full rounded-md">
+            <div className="flex space-x-4 pb-4">
+              {locations.map((location, index) => (
+                <div 
+                  key={index} 
+                  className="glassmorphism-card rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-105 flex-shrink-0"
+                  style={{ width: "240px" }}
+                >
+                  <AspectRatio ratio={1/1} className="bg-kalibre-100">
+                    <img 
+                      src={location.image} 
+                      alt={location.region} 
+                      className="w-full h-full object-cover"
+                    />
+                  </AspectRatio>
+                  <div className="p-4">
+                    <div className="flex items-center mb-2">
+                      <div className="w-8 h-8 rounded-full bg-kalibre-50 flex items-center justify-center mr-2 flex-shrink-0">
+                        {location.icon}
+                      </div>
+                      <h4 className="font-medium text-kalibre-900">{location.region}</h4>
                     </div>
-                    <h4 className="font-medium text-kalibre-900">{location.region}</h4>
+                    <p className="text-kalibre-600 text-xs">{location.description}</p>
                   </div>
-                  <p className="text-kalibre-600 text-xs">{location.description}</p>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          </ScrollArea>
         </div>
 
         <div className="reveal opacity-0">
