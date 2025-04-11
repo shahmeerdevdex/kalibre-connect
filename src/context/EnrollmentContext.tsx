@@ -82,7 +82,8 @@ export const EnrollmentProvider = ({ children }: EnrollmentProviderProps) => {
           email,
           mobile,
           cv_url: cvUrl,
-          course_name: selectedCourse
+          course_name: selectedCourse,
+          status: 'pending'  // Ensure status is explicitly set
         });
         
       if (insertError) {

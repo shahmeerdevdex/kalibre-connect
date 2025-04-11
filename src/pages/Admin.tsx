@@ -10,6 +10,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Calendar as CalendarComponent } from "@/components/ui/calendar";
 import { toast } from "sonner";
 import { format } from "date-fns";
+import { Navigate } from "react-router-dom";
 
 interface Enrollment {
   id: string;
@@ -31,20 +32,43 @@ const Admin = () => {
   const [statusFilter, setStatusFilter] = useState<string | null>(null);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editStatus, setEditStatus] = useState<string>("");
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const [password, setPassword] = useState<string>("");
+  const [loginError, setLoginError] = useState<string | null>(null);
   
+  // Check if admin is logged in
   useEffect(() => {
-    fetchEnrollments();
+    const checkAuth = () => {
+      const adminAuth = localStorage.getItem("admin_authenticated");
+      setIsAuthenticated(adminAuth === "true");
+    };
+    
+    checkAuth();
   }, []);
+  
+  // Fetch enrollments when authenticated
+  useEffect(() => {
+    if (isAuthenticated) {
+      fetchEnrollments();
+    }
+  }, [isAuthenticated]);
   
   const fetchEnrollments = async () => {
     try {
       setLoading(true);
+      console.log("Fetching enrollments from Supabase...");
+      
       const { data, error } = await supabase
         .from("enrollments")
         .select("*")
         .order("created_at", { ascending: false });
         
-      if (error) throw error;
+      if (error) {
+        console.error("Error fetching enrollments:", error);
+        throw error;
+      }
+      
+      console.log("Enrollments fetched:", data);
       setEnrollments(data || []);
     } catch (error) {
       console.error("Error fetching enrollments:", error);
@@ -52,6 +76,23 @@ const Admin = () => {
     } finally {
       setLoading(false);
     }
+  };
+  
+  const handleAdminLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Simple password authentication - in a real app, use proper authentication
+    if (password === "admin123") {
+      localStorage.setItem("admin_authenticated", "true");
+      setIsAuthenticated(true);
+      setLoginError(null);
+    } else {
+      setLoginError("Invalid password");
+    }
+  };
+  
+  const handleLogout = () => {
+    localStorage.removeItem("admin_authenticated");
+    setIsAuthenticated(false);
   };
   
   const updateEnrollmentStatus = async (id: string, status: string) => {
@@ -109,6 +150,11 @@ const Admin = () => {
         "Applied On": new Date(e.created_at).toLocaleDateString()
       }));
       
+      if (dataToExport.length === 0) {
+        toast.error("No data to export");
+        return;
+      }
+      
       const headers = Object.keys(dataToExport[0]).join(',');
       const rows = dataToExport.map(obj => 
         Object.values(obj).map(value => 
@@ -126,6 +172,7 @@ const Admin = () => {
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
+      toast.success("CSV exported successfully");
     } catch (error) {
       console.error("Error exporting to CSV:", error);
       toast.error("Failed to export data");
@@ -134,9 +181,9 @@ const Admin = () => {
   
   const filteredEnrollments = enrollments.filter(enrollment => {
     const matchesSearch = 
-      enrollment.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      enrollment.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      enrollment.course_name.toLowerCase().includes(searchTerm.toLowerCase());
+      enrollment.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      enrollment.email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      enrollment.course_name?.toLowerCase().includes(searchTerm.toLowerCase());
       
     const matchesStatus = !statusFilter || enrollment.status === statusFilter;
     
@@ -159,6 +206,53 @@ const Admin = () => {
     { value: "contacted", label: "Contacted" }
   ];
 
+  // Login page rendering
+  if (isAuthenticated === false) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+          <h1 className="text-2xl font-bold text-center mb-6">Admin Login</h1>
+          
+          <form onSubmit={handleAdminLogin}>
+            {loginError && (
+              <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+                {loginError}
+              </div>
+            )}
+            
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+                Password
+              </label>
+              <Input 
+                id="password" 
+                type="password" 
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter admin password" 
+                className="w-full" 
+              />
+              <p className="text-xs text-gray-500 mt-1">Default password: admin123</p>
+            </div>
+            
+            <Button type="submit" className="w-full bg-kalibre-700 hover:bg-kalibre-800">
+              Login
+            </Button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+  
+  // Loading state
+  if (isAuthenticated === null) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div>Loading...</div>
+      </div>
+    );
+  }
+
   return (
     <div className="container mx-auto p-6">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
@@ -167,13 +261,22 @@ const Admin = () => {
           <p className="text-muted-foreground">Manage all student applications</p>
         </div>
         
-        <Button 
-          className="bg-kalibre-700 hover:bg-kalibre-800 self-end"
-          onClick={exportToCSV}
-        >
-          <Download className="mr-2 h-4 w-4" />
-          Export to CSV
-        </Button>
+        <div className="flex gap-2 self-end">
+          <Button 
+            className="bg-kalibre-700 hover:bg-kalibre-800"
+            onClick={exportToCSV}
+          >
+            <Download className="mr-2 h-4 w-4" />
+            Export to CSV
+          </Button>
+          
+          <Button 
+            variant="outline"
+            onClick={handleLogout}
+          >
+            Logout
+          </Button>
+        </div>
       </div>
       
       <div className="bg-white p-6 rounded-lg shadow mb-8">
