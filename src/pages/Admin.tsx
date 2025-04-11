@@ -235,7 +235,7 @@ const Admin = () => {
               <p className="text-xs text-gray-500 mt-1">Default password: admin123</p>
             </div>
             
-            <Button type="submit" className="w-full bg-kalibre-700 hover:bg-kalibre-800">
+            <Button type="submit" className="w-full">
               Login
             </Button>
           </form>
@@ -248,7 +248,7 @@ const Admin = () => {
   if (isAuthenticated === null) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div>Loading...</div>
+        <div className="animate-pulse">Loading...</div>
       </div>
     );
   }
@@ -257,13 +257,13 @@ const Admin = () => {
     <div className="container mx-auto p-6">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-kalibre-800">Course Enrollments</h1>
+          <h1 className="text-3xl font-bold">Course Enrollments</h1>
           <p className="text-muted-foreground">Manage all student applications</p>
         </div>
         
         <div className="flex gap-2 self-end">
           <Button 
-            className="bg-kalibre-700 hover:bg-kalibre-800"
+            variant="default"
             onClick={exportToCSV}
           >
             <Download className="mr-2 h-4 w-4" />
@@ -308,7 +308,7 @@ const Admin = () => {
         
         {loading ? (
           <div className="flex justify-center items-center py-12">
-            <div className="animate-pulse text-kalibre-600">Loading enrollments...</div>
+            <div className="animate-pulse">Loading enrollments...</div>
           </div>
         ) : filteredEnrollments.length === 0 ? (
           <div className="text-center py-12 text-muted-foreground">
