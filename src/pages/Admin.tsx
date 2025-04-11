@@ -245,13 +245,7 @@ const Admin = () => {
   }
   
   // Loading state
-  if (isAuthenticated === null) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-pulse">Loading...</div>
-      </div>
-    );
-  }
+ 
 
   return (
     <div className="container mx-auto p-6">
