@@ -207,9 +207,51 @@ const Admin = () => {
   ];
 
   // Login page rendering
+  if (isAuthenticated === false) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-gray-100">
+        <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
+          <div className="text-center">
+            <h1 className="text-2xl font-bold">Admin Login</h1>
+            <p className="text-gray-600">Enter your password to access the admin panel</p>
+          </div>
+          
+          <form onSubmit={handleAdminLogin} className="mt-8 space-y-6">
+            <div>
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                Password
+              </label>
+              <Input
+                id="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="mt-1"
+              />
+            </div>
+            
+            {loginError && (
+              <div className="text-red-500 text-sm">{loginError}</div>
+            )}
+            
+            <Button type="submit" className="w-full">
+              Login
+            </Button>
+          </form>
+        </div>
+      </div>
+    );
+  }
 
   // Loading state
- 
+  if (isAuthenticated === null) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="animate-pulse">Loading authentication status...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="container mx-auto p-6">
@@ -249,12 +291,12 @@ const Admin = () => {
             />
           </div>
           
-          <Select value={statusFilter || ""} onValueChange={val => setStatusFilter(val || null)}>
+          <Select value={statusFilter || "all"} onValueChange={val => setStatusFilter(val === "all" ? null : val)}>
             <SelectTrigger className="w-full md:w-[180px]">
               <SelectValue placeholder="All Statuses" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">All Statuses</SelectItem>
+              <SelectItem value="all">All Statuses</SelectItem>
               {statusOptions.map(option => (
                 <SelectItem key={option.value} value={option.value}>
                   {option.label}
