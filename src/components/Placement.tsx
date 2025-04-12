@@ -153,49 +153,49 @@ const Placement = () => {
     {
       icon: <MapPin size={24} className="text-ocean-500" />,
       region: "United Kingdom",
-      image: "/images/uk.jpg",
+      image: "https://res.cloudinary.com/dzwdsxj7s/image/upload/v1743277239/kaliber/ztwd0zuh5njalrakhfev.jpg",
       description: "Prestigious establishments in London and other major UK cities."
     },
     {
       icon: <MapPin size={24} className="text-ocean-500" />,
       region: "Ireland",
-      image: "https://images.unsplash.com/photo-1590077428593-a55bb07c4665?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      image: "https://res.cloudinary.com/dzwdsxj7s/image/upload/v1743277322/kaliber/kihy8rzgeb6vlvu5c9dj.jpg",
       description: "Leading hospitality venues across Dublin and Irish tourist destinations."
     },
     {
       icon: <MapPin size={24} className="text-ocean-500" />,
       region: "USA",
-      image: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      image: "https://res.cloudinary.com/dzwdsxj7s/image/upload/v1743277360/kaliber/osk14g6xtaai1kmi0fme.jpg",
       description: "Premium hotel chains in New York, Miami, Los Angeles and other major cities."
     },
     {
       icon: <MapPin size={24} className="text-ocean-500" />,
       region: "Europe",
-      image: "/images/europe.jpg",
+      image: "https://res.cloudinary.com/dzwdsxj7s/image/upload/v1743277360/kaliber/osk14g6xtaai1kmi0fme.jpg",
       description: "International hotel groups across European capitals and resort destinations."
     },
     {
       icon: <MapPin size={24} className="text-ocean-500" />,
       region: "UAE",
-      image: "/images/dubai.jpg",
+      image: "https://res.cloudinary.com/dzwdsxj7s/image/upload/v1743277526/kaliber/rvkizqecehhqvinvu9qt.jpg",
       description: "5-star hotel chains across Dubai, Abu Dhabi, and other UAE destinations."
     },
     {
       icon: <MapPin size={24} className="text-ocean-500" />,
       region: "Saudi Arabia",
-      image: "/images/saudi.jpg",
+      image: "https://res.cloudinary.com/dzwdsxj7s/image/upload/v1743277577/kaliber/w9j0dvaj54kchhjpfthg.jpg",
       description: "Luxury accommodations in Riyadh, Jeddah, and prestigious holy cities."
     },
     {
       icon: <MapPin size={24} className="text-ocean-500" />,
       region: "Malaysia",
-      image: "https://images.unsplash.com/photo-1596422846543-75c6fc197f11?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      image: "https://res.cloudinary.com/dzwdsxj7s/image/upload/v1743277869/kaliber/l7gtjd4dv11inslya3yb.jpg",
       description: "Leading hospitality venues across Kuala Lumpur and Malaysian tourist spots."
     },
     {
       icon: <MapPin size={24} className="text-ocean-500" />,
       region: "Pakistan",
-      image: "/images/pakistan.jpg",
+      image: "https://res.cloudinary.com/dzwdsxj7s/image/upload/v1743277615/kaliber/jnusxt50ef0xegua1skq.jpg",
       description: "Premier hotels and resorts in Islamabad, Lahore, Karachi, and other major cities."
     },
     {
@@ -207,7 +207,7 @@ const Placement = () => {
     {
       icon: <MapPin size={24} className="text-ocean-500" />,
       region: "Mauritius",
-      image: "https://images.unsplash.com/photo-1547550887-8d08ca5a754f?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      image: "https://res.cloudinary.com/dzwdsxj7s/image/upload/v1743277646/kaliber/lucnlgyvsbyoxknlrfl7.jpg",
       description: "Beach resorts and luxury hotels across this tropical island destination."
     }
   ];
@@ -218,7 +218,7 @@ const Placement = () => {
       position: "Front Office Manager, Marriott Hotels",
       image: "https://images.unsplash.com/photo-1620503374956-c942862f0372?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       location: "Dubai, UAE",
-      quote: "The Kalibre's CTH program opened doors for me internationally. Their placement support helped me secure a position at one of Dubai's finest hotels."
+      quote: "The Kaliber's CTH program opened doors for me internationally. Their placement support helped me secure a position at one of Dubai's finest hotels."
     },
     {
       name: "Hassan Khan",
@@ -232,7 +232,7 @@ const Placement = () => {
       position: "Events Coordinator, Hyatt Regency",
       image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       location: "Riyadh, Saudi Arabia",
-      quote: "From classroom to career, The Kalibre supported me at every step. Their industry connections helped me find my dream job."
+      quote: "From classroom to career, The Kaliber supported me at every step. Their industry connections helped me find my dream job."
     }
   ];
 
