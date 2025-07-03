@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Courses from "@/components/Courses";
+import MOUSection from "@/components/MOUSection";
 import Placement from "@/components/Placement";
 import JoinKalibre from "@/components/JoinKalibre";
 import Testimonials from "@/components/Testimonials";
@@ -42,6 +43,8 @@ const Index = () => {
         <About />
         <div className="py-2"></div>
         <Courses />
+        <div className="py-2"></div>
+        <MOUSection />
         <div className="py-2"></div>
         <Placement />
         <div className="py-2"></div>
