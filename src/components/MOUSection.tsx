@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { FileText, Download } from "lucide-react";
+import { FileText, Download, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface MOU {
   id: string;
@@ -54,80 +62,120 @@ const MOUSection = () => {
     return null; // Don't show the section if no MOUs are available
   }
 
+  const MOUDetailModal = ({ mou }: { mou: MOU }) => (
+    <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+      <DialogHeader>
+        <DialogTitle className="text-2xl font-bold">{mou.title}</DialogTitle>
+      </DialogHeader>
+      
+      <div className="space-y-6">
+        {mou.image_url && (
+          <div className="aspect-video rounded-lg overflow-hidden">
+            <img
+              src={mou.image_url}
+              alt={mou.title}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        )}
+        
+        <div>
+          <h3 className="text-lg font-semibold mb-3">Description</h3>
+          <p className="text-gray-600 leading-relaxed">{mou.description}</p>
+        </div>
+
+        {mou.video_url && (
+          <div>
+            <h3 className="text-lg font-semibold mb-3">Video</h3>
+            <div className="aspect-video rounded-lg overflow-hidden">
+              <video
+                controls
+                className="w-full h-full"
+                poster={mou.image_url || undefined}
+              >
+                <source src={mou.video_url} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        )}
+
+        {mou.document_url && (
+          <div>
+            <h3 className="text-lg font-semibold mb-3">Document</h3>
+            <Button
+              asChild
+              variant="outline"
+              className="w-full"
+            >
+              <a
+                href={mou.document_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2"
+              >
+                <FileText className="h-4 w-4" />
+                View Document
+                <Download className="h-4 w-4" />
+              </a>
+            </Button>
+          </div>
+        )}
+      </div>
+    </DialogContent>
+  );
+
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Memorandums of Understanding
+          <h2 className="text-4xl font-bold text-foreground mb-4">
+            Our Partnerships & MOUs
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Our partnerships and collaborations that enhance your educational experience
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Strategic collaborations that strengthen our educational programs
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {mous.map((mou) => (
-            <div
-              key={mou.id}
-              className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
-            >
-              {mou.image_url && (
-                <div className="aspect-video">
-                  <img
-                    src={mou.image_url}
-                    alt={mou.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              )}
-              
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {mou.title}
-                </h3>
+            <Dialog key={mou.id}>
+              <Card className="hover:shadow-lg transition-all duration-300 hover:scale-105">
+                <CardHeader className="pb-3">
+                  {mou.image_url && (
+                    <div className="aspect-video rounded-lg overflow-hidden mb-3">
+                      <img
+                        src={mou.image_url}
+                        alt={mou.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  )}
+                  <CardTitle className="text-lg font-semibold line-clamp-2">
+                    {mou.title}
+                  </CardTitle>
+                </CardHeader>
                 
-                <p className="text-gray-600 mb-4 line-clamp-3">
-                  {mou.description}
-                </p>
-
-                <div className="space-y-3">
-                  {mou.video_url && (
-                    <div className="aspect-video">
-                      <video
-                        controls
-                        className="w-full h-full rounded-lg"
-                        poster={mou.image_url || undefined}
-                      >
-                        <source src={mou.video_url} type="video/mp4" />
-                        Your browser does not support the video tag.
-                      </video>
-                    </div>
-                  )}
-
-                  {mou.document_url && (
-                    <div className="flex justify-center">
-                      <Button
-                        asChild
-                        variant="outline"
-                        className="w-full"
-                      >
-                        <a
-                          href={mou.document_url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center justify-center gap-2"
-                        >
-                          <FileText className="h-4 w-4" />
-                          View Document
-                          <Download className="h-4 w-4" />
-                        </a>
-                      </Button>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
+                <CardContent className="pt-0">
+                  <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+                    {mou.description}
+                  </p>
+                  
+                  <DialogTrigger asChild>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="w-full group"
+                    >
+                      <Eye className="h-4 w-4 mr-2 transition-transform group-hover:scale-110" />
+                      View Details
+                    </Button>
+                  </DialogTrigger>
+                </CardContent>
+              </Card>
+              
+              <MOUDetailModal mou={mou} />
+            </Dialog>
           ))}
         </div>
       </div>
