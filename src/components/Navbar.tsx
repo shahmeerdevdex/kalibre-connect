@@ -43,7 +43,7 @@ const Navbar = () => {
         <div className="flex items-center">
             <a href="#" className="text-2xl font-display font-bold text-kaliber-950 flex items-center gap-2">
               <img 
-                src="/public/logo.png" 
+                src="https://d2984b42-d75a-4180-bb16-fc4ae0aa8783.lovableproject.com/public/logo.png" 
                 alt="The Kaliber Logo"
                 className="h-10 w-auto"
               />
